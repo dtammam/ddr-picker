@@ -1,0 +1,63 @@
+collection: Dance Dance Revolution
+shortname: DDR
+
+game: DDR Omnimix
+file: C:\Games\DDR-JAO-2022052400\ddro.exe
+sortBy: a
+launch: {file.path}
+assets.box_front: assets/omni-custom.png
+
+game: Extreme
+file: C:\pegasus\games\ddr573-mame\ddrexproc.exe
+sortBy: b
+launch: {file.path}
+assets.box_front: assets/extreme.png
+
+game: DDRMAX2
+file: C:\pegasus\games\ddr573-mame\ddrmax2.exe
+sortBy: c
+launch: {file.path}
+assets.box_front: assets/ddrmax2.png
+
+
+game: DDRMAX
+file: C:\pegasus\games\ddr573-mame\ddrmax.exe
+sortBy: d
+launch: {file.path}
+assets.box_front: assets/ddrmax.png
+
+game: 5thMix
+file: C:\pegasus\games\ddr573-mame\ddr5m.exe
+sortBy: e
+launch: {file.path}
+assets.box_front: assets/5thmix.png
+
+game: 4thMix
+file: C:\pegasus\games\ddr573-mame\ddr4mp.exe
+sortBy: f
+launch: {file.path}
+assets.box_front: assets/4thmix.png
+
+game: 3rdMix
+file: C:\pegasus\games\ddr573-mame\ddr3mj.exe
+sortBy: g
+launch: {file.path}
+assets.box_front: assets/3rdmix.png
+
+game: 2ndMix
+file: C:\pegasus\games\ddr573-mame\ddr2m.exe
+sortBy: h
+launch: {file.path}
+assets.box_front: assets/2ndmix.png
+
+game: DDR Internet Ranking
+file: C:\pegasus\games\ddr573-mame\ddrj.exe
+sortBy: i
+launch: {file.path}
+assets.box_front: assets/ddrj.png
+
+
+
+
+
+

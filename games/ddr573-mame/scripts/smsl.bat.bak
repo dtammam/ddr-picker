@@ -1,0 +1,4 @@
+@echo off
+Start C:\pegasus\games\ddr573-mame\kill_pegasus.bat && exit
+Start C:\"Program Files (x86)"\"GrooveStats Launcher"\gslauncher.exe -autolaunch
+exit 0

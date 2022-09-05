@@ -1,0 +1,32 @@
+collection: Dancing Stage
+shortname: DS
+
+game: Euromix
+file: C:\pegasus\games\ddr573-mame\dsem.exe
+sortBy: ds1
+launch: {file.path}
+assets.box_front: assets/euromix.png
+
+game: Euromix 2
+file: C:\pegasus\games\ddr573-mame\dsem2.exe
+sortBy: ds2
+launch: {file.path}
+assets.box_front: assets/euromix2.png
+
+game: True Kiss Destination
+file: C:\pegasus\games\ddr573-mame\dsftkd.exe
+sortBy: ds3
+launch: {file.path}
+assets.box_front: assets/dstkd.png
+
+game: Dreams Come True
+file: C:\pegasus\games\ddr573-mame\dsfdct.exe
+sortBy: ds4
+launch: {file.path}
+assets.box_front: assets/dsdct.png
+
+game: Disney's Rave
+file: C:\pegasus\games\ddr573-mame\dsfdr.exe
+sortBy: ds5
+launch: {file.path}
+assets.box_front: assets/disney.png

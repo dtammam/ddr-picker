@@ -1,0 +1,172 @@
+[2022/09/04 15:38:37] I:launcher: SpiceTools Bootstrap (x32)
+[2022/09/04 15:38:37] I:launcher: 1.0-V-2021-04-02T05:34:21
+[2022/09/04 15:38:37] I:launcher: arguments:
+[2022/09/04 15:38:37] I:superexit: enabled
+[2022/09/04 15:38:37] I:avs-core: updated heap size: 16777216 -> 33554432
+[2022/09/04 15:38:37] I:game: pre_attach: Dance Dance Revolution
+[2022/09/04 15:38:37] I:rawinput: detected performance counter frequency: 10000000
+[2022/09/04 15:38:37] I:rawinput: reloading devices
+[2022/09/04 15:38:37] M:rawinput: skipping vendor-specific device
+[2022/09/04 15:38:37] M:rawinput: skipping vendor-specific device
+[2022/09/04 15:38:37] M:rawinput: skipping vendor-specific device
+[2022/09/04 15:38:37] M:rawinput: skipping vendor-specific device
+[2022/09/04 15:38:37] I:rawinput: overwriting existing device:  / 
+[2022/09/04 15:38:37] I:rawinput: destroying device:  / 
+[2022/09/04 15:38:37] I:rawinput: overwriting existing device:  / 
+[2022/09/04 15:38:37] I:rawinput: destroying device:  / 
+[2022/09/04 15:38:37] I:rawinput: overwriting existing device:  / 
+[2022/09/04 15:38:37] I:rawinput: destroying device:  / 
+[2022/09/04 15:38:37] I:rawinput: printing list of detected devices
+[2022/09/04 15:38:37] I:rawinput: detected device count: 22
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_413C&PID_2113&MI_01&Col01#9&67e112f&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Dell KB216 Wired Keyboard
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300a3
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 268
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Unknown (000c:0000) to AC Font Color (0-572)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_D209&PID_0450&MI_02&Col02#9&23ce26fc&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Ultimarc J-PAC
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x307cf
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 372
+[2022/09/04 15:38:37] M:rawinput: device usage: Unknown (0006:0000)
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button output caps detected: Generic Indicator to Generic Indicator (75-75)
+[2022/09/04 15:38:37] M:rawinput: device value caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device value caps detected: Generic Indicator (0 to 0, 8-bit)
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_D209&PID_0450&MI_02&Col01#9&23ce26fc&0&0000#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Ultimarc J-PAC
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x3f0515
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 372
+[2022/09/04 15:38:37] M:rawinput: device usage: Unknown (0001:0000)
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button output caps detected: Generic Indicator to Generic Indicator (75-75)
+[2022/09/04 15:38:37] M:rawinput: device value caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device value caps detected: Generic Indicator (0 to 0, 8-bit)
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col03#a&1befc971&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: KBDfans KBDPAD-MKII
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300af
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 268
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Consumer Control to AC Idle Keep Alive (1-672)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col03#a&33a9fd20&0&0002#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: KBDfans KBDPAD-MKII
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300c1
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 268
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Consumer Control to AC Idle Keep Alive (1-672)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_046D&PID_C52B&MI_01&Col02#9&25484b11&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Logitech USB Receiver
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x40081
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 268
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Consumer Control to Unknown (000c:02ff) (1-767)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_1532&PID_0036&MI_01&Col02#a&32ac5da5&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Razer Naga Hex
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300c9
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 268
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 1
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Unknown (000c:0000) to AC Font Color (0-572)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_D209&PID_0450&MI_01&Col02#9&36fe433a&0&0001#{4d1e55b2-f16f-11cf-88cb-001111000030}
+[2022/09/04 15:38:37] M:rawinput: device desc: Ultimarc J-PAC
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x607d7
+[2022/09/04 15:38:37] M:rawinput: device type: HID
+[2022/09/04 15:38:37] M:rawinput: device preparsed size: 684
+[2022/09/04 15:38:37] M:rawinput: device usage: Consumer Control
+[2022/09/04 15:38:37] M:rawinput: device button caps count: 5
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Scan Next Track to Eject (181-184)
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Play/Pause to Play/Pause (205-205)
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Mute to Mute (226-226)
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Volume Decrement to Volume Decrement (234-234)
+[2022/09/04 15:38:37] M:rawinput: device button caps detected: Volume Increment to Volume Increment (233-233)
+[2022/09/04 15:38:37] M:rawinput: device button output caps count: 0
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_1532&PID_0036&MI_01&Col01#a&32ac5da5&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: Razer Naga Hex
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300c7
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_00#a&fd2bf5e&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300bd
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_00#a&8bfad33&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300b1
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_413C&PID_2113&MI_00#9&1d592c93&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x3009d
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_046D&PID_C52B&MI_00#9&1710d4f&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x30099
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col04#a&1befc971&0&0003#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300b5
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_D209&PID_0450&MI_00#9&3014273&0&0000#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x1005d1
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col04#a&33a9fd20&0&0003#{884b96c3-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID Keyboard Device
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300c3
+[2022/09/04 15:38:37] M:rawinput: device type: KEYBOARD
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_D209&PID_0450&MI_01&Col03#9&36fe433a&0&0002#{378de44c-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID-compliant mouse
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x607d5
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col01#a&1befc971&0&0000#{378de44c-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID-compliant mouse
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300b3
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_A103&PID_0006&MI_01&Col01#a&33a9fd20&0&0000#{378de44c-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID-compliant mouse
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x300bf
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_046D&PID_C52B&MI_01&Col01#9&25484b11&0&0000#{378de44c-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: HID-compliant mouse
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x3009b
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: device name: \\?\HID#VID_1532&PID_0036&MI_00#a&3246d08b&0&0000#{378de44c-56ef-11d1-bc8c-00a0c91405dd}
+[2022/09/04 15:38:37] M:rawinput: device desc: Razer Naga Hex
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x400c5
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: device name: 
+[2022/09/04 15:38:37] M:rawinput: device desc: 
+[2022/09/04 15:38:37] M:rawinput: device handle: 0x6042b
+[2022/09/04 15:38:37] M:rawinput: device type: MOUSE
+[2022/09/04 15:38:37] M:rawinput: done printing devices
+[2022/09/04 15:38:37] I:hooks::lang: early initialization
+[2022/09/04 15:38:37] I:avs-core: loading DLL
+[2022/09/04 15:38:37] M:avs-core: version string: 2.15.8.0
+[2022/09/04 15:38:37] I:avs-core: Found AVS2 core 2.15.8.0
+[2022/09/04 15:38:37] M:avs-core: optional functions identified
+[2022/09/04 15:38:37] I:avs-ea3: loading DLL
+[2022/09/04 15:38:37] I:avs-ea3: Found AVS2 EA3 2.15.8.0
+[2022/09/04 15:38:37] I:network: SpiceTools Network
+[2022/09/04 15:38:37] I:network: Network preferences: 10.9.0.0
+[2022/09/04 15:38:37] I:avs-core: booting (using prop/avs-config.xml)
+[2022/09/04 15:38:37] F:avs-core: failed to open config file (prop/avs-config.xml): The system cannot find the path specified.
+
+[2022/09/04 15:38:37] I:launcher: stopping subsystems
+[2022/09/04 15:38:37] I:logger: stop
+[2022/09/04 15:38:38] I:rawinput: disposing devices
