@@ -12,6 +12,7 @@ StartFrontendApps.ahk
     Version:
         8/27/2022 - Original version
         9/5/2022 - Updated comment block
+        9/17/2022 - Use hidden windowstyle for silent execution
 #>
 */
 
@@ -24,7 +25,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; # Run the pre-designated .ps1 files with the button press
 
-Run, powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\StartBackendApps.ps1
+Run, powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApps.ps1
 Run, powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1
 Run, Plus-ScreenshotTake.exe
 Run, Slash-ScreenshotTake.exe

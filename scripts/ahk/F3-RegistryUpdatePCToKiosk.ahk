@@ -12,6 +12,7 @@ F3-RegistryUpdatePCToKiosk.ahk
     Version:
         8/27/2022 - Original version
         9/5/2022 - Updated comment block
+        9/17/2022 - Use hidden windowstyle for silent execution
 #>
 */
 
@@ -25,4 +26,4 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; # Run the pre-designated .ps1 file with the button press
 
 F3::
-Run, powershell  -noLogo -ExecutionPolicy unrestricted -file C:\pegasus\scripts\RegistryUpdateKioskToPC.ps1,, Hide
+Run, powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\RegistryUpdatePCToKiosk.ps1

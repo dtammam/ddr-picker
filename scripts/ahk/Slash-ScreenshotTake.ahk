@@ -12,6 +12,7 @@ Slash-ScreenshotTake.ahk
     Version:
         8/27/2022 - Original version
         9/5/2022 - Updated comment block
+        9/17/2022 - Use hidden windowstyle for silent execution
 #>
 */
 
@@ -22,7 +23,5 @@ Slash-ScreenshotTake.ahk
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-SetKeyDelay, 0, 50
-
 /::
-Run, powershell  -noLogo -ExecutionPolicy unrestricted -file C:\Games\ScreenshotTake.ps1,, Hide
+Run, powershell.exe -WindowStyle Hidden -File C:\Games\ScreenshotTake.ps1,, Hide

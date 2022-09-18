@@ -1,6 +1,6 @@
 ﻿/*
 <#
-Plus-ScreenshotTake.ahk
+Spacebar-KillandResetPegasus.ahk
 
     Goal:
         The purpose of this .ahk is to launch the relevant .ps1 via button press.
@@ -12,7 +12,6 @@ Plus-ScreenshotTake.ahk
     Version:
         8/27/2022 - Original version
         9/5/2022 - Updated comment block
-        9/17/2022 - Use hidden windowstyle for silent execution
 #>
 */
 
@@ -25,5 +24,5 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; # Run the pre-designated .ps1 file with the button press
 
-NumpadAdd::
-Run, powershell.exe -WindowStyle Hidden -File C:\Games\ScreenshotTake.ps1
+Space::
+Run, powershell  -noLogo -ExecutionPolicy unrestricted -file C:\pegasus\scripts\KillAllAndResetPegasus.ps1,, Hide
