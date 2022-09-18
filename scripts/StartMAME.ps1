@@ -23,7 +23,7 @@ StartMAME.ps1
         People who use a frontend launcher and need MAME.exe to launch in an unobtrusive way.
 
     Version:
-        9/3/2022
+        9/3/2022 - Original version
 
     Return Codes:
         Success - 0

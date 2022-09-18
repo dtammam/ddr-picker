@@ -26,4 +26,4 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; # Run the pre-designated .ps1 file with the button press
 
 F2::
-Run, powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\RegistryUpdateKioskToPC.ps1
+Run, C:\pegasus\scripts\RegistryUpdateKioskToPC.vbs,, hide1
