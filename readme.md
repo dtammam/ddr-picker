@@ -1,7 +1,7 @@
 # DDR Picker
-DDR Picker is a project started by [Evan Clue](https://github.com/evanclue) who is an awesome [artist](https://clue.graphics/) and [content creator](https://www.youtube.com/c/KKClue). I personally found out about the project incidentally, fell in love with it, got in touch with Evan and have been continuously improving it and learning more about coding as a result. Here's a video of the original, which looks only slightly different from this project in terms of the order of games:
+DDR Picker is a project started by [Evan Clue](https://github.com/evanclue) who is an awesome [artist](https://clue.graphics/) and [content creator](https://www.youtube.com/c/KKClue). I personally found out about the project incidentally, fell in love with it, got in touch with Evan and have been continuously improving it and learning more about coding as a result. Here's a brief video:
 
-https://user-images.githubusercontent.com/72628412/178119730-f949970a-1269-4377-9f61-493f88cf89aa.mp4
+https://user-images.githubusercontent.com/75964108/189134972-04609e77-43ae-49ae-8da0-9a018fbe5106.MOV
 
 Evan did a fantastic job in documenting the original purpose, context and limitations which you can read in the [original readme](https://github.com/evanclue/ddr-picker/blob/main/README.md). 
 The purpose of this specific repo is for my ongoing active development with new feature additions and code modifications over time - once enough change has happened and it's been greenlit, Evan and I will merge projects, readmes and documentation.
