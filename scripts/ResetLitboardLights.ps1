@@ -30,7 +30,7 @@ $LightUtility = "C:\pegasus\scripts\exe\$($LightExe).exe"
 # Overarching Try block for execution
 Try {
     Write-Output "Cabinet: Starting light test..."
-    Start-Process $LightUtility
+    Start-Process $LightUtility -WindowStyle Hidden
     Start-Sleep -Milliseconds 325
     Write-Output "Cabinet: Stopping light test..."
     Stop-Process -Name $LightExe

@@ -58,7 +58,7 @@ Try {
 
     # Start all relevant processes, ensuring that the frontend launcher starts last so it is the focused window.
     Write-Output "Cabinet: Starting all relevant processes..."
-    Start-Process PowerShell C:\pegasus\scripts\ResetLitboardLights.ps1 -WindowStyle Minimized
+    Start-Process PowerShell C:\pegasus\scripts\ResetLitboardLights.ps1 -WindowStyle Hidden
     Start-Process PowerShell C:\Pegasus\scripts\RestartiCloudLoop.ps1 -WindowStyle Minimized
     Start-Process C:\pegasus\pegasus-fe.exe
     Write-Output "Cabinet: Started all relevant processes."

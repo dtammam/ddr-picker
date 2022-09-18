@@ -2,8 +2,5 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 
-
-
 SetWorkingDir C:\Program Files (x86)\GrooveStats Launcher
-
 Run gslauncher.exe -autolaunch

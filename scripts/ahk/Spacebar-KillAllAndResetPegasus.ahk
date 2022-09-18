@@ -1,6 +1,6 @@
 ﻿/*
 <#
-Spacebar-KillandResetPegasus.ahk
+Spacebar-KillAllAndResetPegasus.ahk
 
     Goal:
         The purpose of this .ahk is to launch the relevant .ps1 via button press.
@@ -13,6 +13,7 @@ Spacebar-KillandResetPegasus.ahk
         8/27/2022 - Original version
         9/5/2022 - Updated comment block
         9/17/2022 - Use hidden windowstyle for silent execution
+        9/18/2022 - New logic of .ahk to .vbs to .ps1
 #>
 */
 
@@ -23,7 +24,7 @@ Spacebar-KillandResetPegasus.ahk
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-; # Run the pre-designated .ps1 file with the button press
+; # Run the pre-designated .vbs (and then .ps1) file with the button press
 
 Space::
-Run, powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillAllAndResetPegasus.ps1,, Hide
+Run, C:\pegasus\scripts\KillAllAndResetPegasus.vbs,, hide

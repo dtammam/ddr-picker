@@ -9,7 +9,8 @@ StartRhythmGame.ps1
         People who want to be able to launch their game via .ps1 script!
 
     Version:
-        9/4/2022
+        9/4/2022 - Original version
+        9/18/2022 - Minor adjustment to open minimized taskkill
 
     Return Codes:
         Success - 0
@@ -32,7 +33,8 @@ $Host.UI.RawUI.WindowTitle = "StartInTheGroove2"
 # Overarching Try block for execution
 Try {
     Write-Output "Killing the frontend launcher..."
-    PowerShell.exe "C:\pegasus\scripts\KillPegasus.ps1"
+    Start-Process PowerShell C:\pegasus\scripts\KillPegasus.ps1 -WindowStyle Hidden
+    # PowerShell.exe "C:\pegasus\scripts\KillPegasus.ps1"
 
     Write-Output "Starting the game..."
     Start-Process $Global:Exe
