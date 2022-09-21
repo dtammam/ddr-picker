@@ -1,4 +1,4 @@
-;~ 	KillAllAndResetPegasus.au3
+;~ 	Plus-ScreenshotTake.au3
 ;~
 ;~ 	Goal:
 ;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
@@ -16,10 +16,10 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Hotkey for launching the app.
 Global $Pressed
-HotKeySet("{SPACE}", "Start_Program")
+HotKeySet("{NUMPADADD}", "Start_Program")
 
 ; Variable to update for our specified file.
-$File = 'C:\pegasus\scripts\KillAllAndResetPegasus.ps1'
+$File = 'C:\pegasus\scripts\ScreenshotTake.ps1'
 
 ; Neverending loop, waiting on the $Pressed variable.
 While True

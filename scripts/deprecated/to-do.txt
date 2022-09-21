@@ -1,6 +1,0 @@
-- Fix simply love graphic size
-- Get all Dancing Stages working
-- Get all stepmanias working
-- Setup the ahk for terminate
-- Setup auto vpn connect
-- Replace explorer.exe
