@@ -47,8 +47,8 @@ try {
     # Prep variables for the file we'll create
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
     # $File = "C:\Users\me\Pictures\Uploads\$($FileName).jpg"
+    $RootPath = "C:\Staging"
     $DestPath = "C:\Users\me\Pictures\Uploads\"
-    $ArchivedPath = "C:\Users\me\Pictures\Archived\"
     $File = "C:\Staging\$($FileName).jpg"
 
     # Add assembly references
@@ -87,7 +87,6 @@ try {
     Foreach ($File in $FileList) {
         # Copy to the destination directory
         Copy-Item -Path $File -Destination $DestPath
-        Copy-Item -Path $File -Destination $ArchivedPath
         Write-Log "Successfully copied $($File) to destination"
         # Now that its' processed... delete it from the root directory
         Remove-Item -Path $File
