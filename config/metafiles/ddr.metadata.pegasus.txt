@@ -19,7 +19,6 @@ sortBy: c
 launch: {file.path}
 assets.box_front: assets/ddrmax2.png
 
-
 game: DDRMAX
 file: C:\pegasus\games\ddr573-mame\ddrmax.exe
 sortBy: d

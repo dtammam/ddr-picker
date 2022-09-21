@@ -26,4 +26,4 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; # Run the pre-designated .ps1 file with the button press
 
 NumpadAdd::
-Run, powershell.exe -WindowStyle Hidden -File C:\Games\ScreenshotTake.ps1
+Run, powershell.exe -WindowStyle Hidden -File C:\Games\ScreenshotTake.ps1,, Hide

@@ -38,6 +38,40 @@ Param (
     [String]$Global:ROMAndState = (Read-Host "Please input ROM and save state.")
 )
 
+# Global variables for various logging functions
+$ScriptName = 'StartMAME.ps1'
+$LogFolderPath = "C:\Program Files\_ScriptLogs"
+$LogFilePath = "$($LogFolderPath)\$($ScriptName).log"
+$Global:LogTailPath = "$($LogFolderPath)\$($ScriptName)_Transcript.log"
+
+# Create our log directory if it doesn't exist
+if (!(Test-Path -Path $LogFolderPath)) {
+    New-Item -ItemType Directory -Force -Path $LogFolderPath
+}
+
+Function Write-Log($Message) {
+
+<#
+    .SYNOPSIS 
+    Writes to a log file in an efficient way, naming it after the script and empowering you to use a similarly-formatted transcript file.
+    .DESCRIPTION
+    Adds a date and grabs the most recent message, appends it to the global event message and outputs it as a string within the log file itself.
+    .PARAMETER $Message
+    The log you'd want written in the event.
+    .INPUTS
+    This function does not support piping.
+    .OUTPUTS
+    Returns a written log.
+    .EXAMPLE
+    Write-Log "Script failed with the following exception: $($_)"
+    .LINK
+    N/A
+#>
+    Add-Content $LogFilePath "$(Get-Date) - $Message"
+    Write-Output $Message
+    $Global:EventMessage += $Message | Out-String
+}
+
 # Define good/bad exit codes and other relevant variables
 $SuccessExitCode = 0
 $FailureExitCode = 1
@@ -57,9 +91,9 @@ Try {
     }
 
     # Start MAME.exe
-    Write-Output "Cabinet: Launching MAME.exe with $($Global:ROMAndState)..."
+    Write-Log "Cabinet: Launching MAME.exe with $($Global:ROMAndState)..."
     Start-MAME ($Global:ROMAndState)
-    Write-Output "Cabinet: launched MAME.exe."
+    Write-Log "Cabinet: launched MAME.exe."
 
     # Clean exit
     Exit $SuccessExitCode
@@ -67,6 +101,6 @@ Try {
 
 # Overarching Catch block for issues
 Catch {
-    Write-Output "Script failed with the following exception: $($_)"
+    Write-Log "Script failed with the following exception: $($_)"
     Exit $FailureExitCode
 }
