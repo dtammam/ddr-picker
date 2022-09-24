@@ -32,7 +32,7 @@ launch: {file.path}
 assets.box_front: assets/itg2.png
 
 game: In The Groove
-file: C:\pegasus\games\stepmania\StartInTheGroove1.exe
+file: C:\pegasus\games\stepmania\StartInTheGroove1AC.exe
 sortBy: f
 launch: {file.path}
 assets.box_front: assets/itg1.png
