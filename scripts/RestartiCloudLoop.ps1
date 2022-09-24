@@ -26,6 +26,7 @@ RestartiCloudLoop.ps1
     Version:
         8/27/2022 - Original version
         9/2/2022 - Conversion from .bat to .ps1
+        9/23/2022 - Added logic to save photos to an Archived directory before deleting from Uploads
 
     Return Codes:
         Success - 0
@@ -53,9 +54,7 @@ Try {
         $ApplePath = "C:\Program Files (x86)\Common Files\Apple\Internet Services\"
         $iCloudServices = "iCloudServices"
         $iCloudPhotos = "iCloudPhotos"
-        # Start-Sleep -Seconds 2
-        # $LongSleep = Start-Sleep -Seconds 260
-
+        
         # Close iCloud Services
         Start-Sleep -Seconds 2
         Write-Output "iCloud Fix: Stopping $($iCloudServices)..."
@@ -99,14 +98,18 @@ Try {
         Write-Output "iCloud Fix: Waiting 5 minutes to delete photos and restart the loop."
         Start-Sleep -Seconds 300
         $PhotoUploadPath = "C:\Users\me\Pictures\Uploads\"
+        $PhotoArchivePath = "C:\Users\me\Pictures\Archived\"
         $Photos = (Get-ChildItem $PhotoUploadPath -Recurse).FullName
 
         # Recurse through the Uploads directory and delete all items in it
         Foreach ($Photo in $Photos) {
+            Copy-Item -Path $Photo -Destination $PhotoArchivePath
+            Write-Output "iCloud Fix: Successfully copied $($Photo) to $($PhotoArchivePath)."
+            $ArchivedCount += 1
             Remove-Item -Path $Photo
             Write-Output "iCloud Fix: Successfully deleted $($Photo) in $($PhotoUploadPath)."
             $DeletedCount += 1
-            Write-Output "iCloud Fix: Successfully deleted $($DeletedCount) photos."
+            Write-Output "iCloud Fix: Successfully archived $($ArchivedCount) photos and deleted $($DeletedCount) photos."
             Continue
         }
         # Restart the loop
