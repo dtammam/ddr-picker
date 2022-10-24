@@ -8,6 +8,7 @@
 ;~
 ;~ 	Version:
 ;~ 		9/20/2022 - Original version.
+;~ 		10/23/2022 -  - Migration to nircmd.exe for improved screenshot resolution (Plus-Get-Screenshot.exe and Slash-Get-Screenshot.exe)
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -18,8 +19,8 @@ Run("powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApp
 Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1", "", @SW_HIDE)
 
 ; Launch relevant apps.
-Run("C:\pegasus\Plus-ScreenshotTake.exe")
-Run("C:\pegasus\Slash-ScreenshotTake.exe")
+Run("C:\pegasus\Plus-Get-Screenshot.exe")
+Run("C:\pegasus\Slash-Get-Screenshot.exe")
 Run("C:\pegasus\Spacebar-KillAllAndResetPegasus.exe")
 Run("C:\pegasus\Tilde-RestartComputer.exe")
 Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
