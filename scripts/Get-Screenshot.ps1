@@ -1,27 +1,27 @@
 <#
 ScreenshotCopy.ps1
-    .SYNOPSIS
-        The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
-    .DESCRIPTION
-        The audience is automation-oriented screenshotters.
-    .NOTES
-        - 10/23/2022 - Rewritten with nircmd.exe
-        - 8/28/2022 - Added logic to 'stage' picture
-        - 8/27/2022 - Code block for sound 
-        - 8/17/2022 - Original version
+.SYNOPSIS
+    The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
+.DESCRIPTION
+    The audience is automation-oriented screenshotters.
+.NOTES
+    - 10/23/2022 - Rewritten with nircmd.exe
+    - 8/28/2022 - Added logic to 'stage' picture
+    - 8/27/2022 - Code block for sound 
+    - 8/17/2022 - Original version
 #>
 
 # Global variables for various logging functions
 $Global:ScriptName = $MyInvocation.MyCommand
 $Global:SuccessExitCode = '0'
 $Global:FailureExitCode = '1'
-$LogFolderPath = "C:\Program Files\_ScriptLogs"
-$LogFilePath = "$($LogFolderPath)\$($ScriptName).log"
-$Global:LogTailPath = "$($LogFolderPath)\$($ScriptName)_Transcript.log"
+$Global:LogFolderPath = "C:\Program Files\_ScriptLogs"
+$Global:LogFilePath = "$($Global:LogFolderPath)\$($Global:ScriptName).log"
+$Global:LogTailPath = "$($Global:LogFolderPath)\$($Global:ScriptName)_Transcript.log"
 
 # Create our log directory if it doesn't exist
-if (!(Test-Path -Path $LogFolderPath)) {
-    New-Item -ItemType Directory -Force -Path $LogFolderPath
+if (!(Test-Path -Path $Global:LogFolderPath)) {
+    New-Item -ItemType Directory -Force -Path $Global:LogFolderPath
 }
 
 Function Write-Log($Message) {
@@ -36,7 +36,7 @@ Function Write-Log($Message) {
         Write-Log "Script failed with the following exception: $($_)"
     #>
 
-    Add-Content $LogFilePath "$(Get-Date) - $Message"
+    Add-Content $Global:LogFilePath "$(Get-Date) - $Message"
     Write-Output $Message
     $Global:EventMessage += $Message | Out-String
 }
@@ -71,25 +71,28 @@ Function Get-Screenshot {
     $ScreenshotApp = "C:\pegasus\scripts\exe\nircmd.exe"
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
     $FilePath = "C:\Users\me\Pictures\Uploads"
-    $File = "$($FilePath)\$($FileName).png"
+    $Global:File = "$($FilePath)\$($FileName).png"
     Start-Process $ScreenshotApp -ArgumentList "savescreenshot $($File)"
 }
 
 try {
     Start-Transcript -Path $LogTailPath -Append
-    Write-Log "Starting script..."
+    Write-Log "`n==================================================================================================`n"
+    Write-Log "Get-Screenshot.ps1: Starting script."
 
     Start-Sound ("C:\Games\camera-focus-beep-01.wav")
+    Write-Log "Get-Screenshot.ps1: Taking screenshot..."
     Get-Screenshot
+    Write-Log "Get-Screenshot.ps1: Screenshot taken. Saved to $($Global:File)."
     Start-Sound ("C:\Games\camera-shutter-click-01.wav")
 
-    Write-Log "Script succeeded."
+    Write-Log "Get-Screenshot.ps1: Script succeeded."
     Stop-Transcript
     Exit $Global:SuccessExitCode
 }
 
 catch {
-    Write-Log "Script failed with the following exception: $($_)"
+    Write-Log "Get-Screenshot.ps1: Script failed with the following exception: $($_)"
     Stop-Transcript
     Exit $Global:FailureExitCode
 }
