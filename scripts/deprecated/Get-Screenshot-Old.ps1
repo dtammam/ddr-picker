@@ -1,45 +1,27 @@
-<#PSScriptInfo
-
-.VERSION 1.4
-
-.AUTHOR Dean Tammam
-.TAGS Get-Screenshot
-.RELEASENOTES
-Version 1.4: 10/30/2022 - Rewritten with boxcutter.exe
-Version 1.3: 10/23/2022 - Rewritten with nircmd.exe
-Version 1.2: 8/28/2022 - Added logic to 'stage' picture
-Version 1.1: 8/27/2022 - Code block for sound 
-Version 1.0: 8/17/2022 - Original version
-#>
-
 <#
+ScreenshotCopy.ps1
 .SYNOPSIS
     The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
 .DESCRIPTION
     The audience is automation-oriented screenshotters.
 .NOTES
-
+    - 10/23/2022 - Rewritten with nircmd.exe
+    - 8/28/2022 - Added logic to 'stage' picture
+    - 8/27/2022 - Code block for sound 
+    - 8/17/2022 - Original version
 #>
 
 # Global variables for various logging functions
+$Global:ScriptName = $MyInvocation.MyCommand
+$Global:SuccessExitCode = '0'
+$Global:FailureExitCode = '1'
+$Global:LogFolderPath = "C:\Program Files\_ScriptLogs"
+$Global:LogFilePath = "$($Global:LogFolderPath)\$($Global:ScriptName).log"
+$Global:LogTailPath = "$($Global:LogFolderPath)\$($Global:ScriptName)_Transcript.log"
 
-Function Open-Header {
-    <#
-    .SYNOPSIS 
-        Prepares global variables.
-    .DESCRIPTION
-        Prepares global variables that will be used for various functions throughout the script. Specifically configured for logging locations and exit codes.
-    #>
-    $Global:ScriptName = 'Get-Screenshot.ps1'
-    $Global:SuccessExitCode = '0'
-    $Global:FailureExitCode = '1'
-    $Global:LogFolderPath = "C:\Program Files\_ScriptLogs"
-    $Global:LogFilePath = "$($Global:LogFolderPath)\$($Global:ScriptName).log"
-    $Global:LogTailPath = "$($Global:LogFolderPath)\$($Global:ScriptName)_Transcript.log"
-
-    if (!(Test-Path -Path $Global:LogFolderPath)) {
-        New-Item -ItemType Directory -Force -Path $Global:LogFolderPath
-    }
+# Create our log directory if it doesn't exist
+if (!(Test-Path -Path $Global:LogFolderPath)) {
+    New-Item -ItemType Directory -Force -Path $Global:LogFolderPath
 }
 
 Function Write-Log($Message) {
@@ -86,17 +68,14 @@ Function Get-Screenshot {
             - $FilePath can be updated to your screenshot folder
     #>
 
-    $ScreenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
+    $ScreenshotApp = "C:\pegasus\scripts\exe\nircmd.exe"
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-    $FilePath = "C:\Users\me\Pictures\Archived"
+    $FilePath = "C:\Users\me\Pictures\Uploads"
     $Global:File = "$($FilePath)\$($FileName).png"
-    Start-Process $ScreenshotApp -ArgumentList "$File"
-    Start-Sleep -Seconds 2
-    Copy-Item -Path $Global:File -Destination "C:\Users\me\Pictures\Uploads"
+    Start-Process $ScreenshotApp -ArgumentList "savescreenshotfull $($File)"
 }
 
 try {
-    Open-Header
     Start-Transcript -Path $LogTailPath -Append
     Write-Log "`n==================================================================================================`n"
     Write-Log "Get-Screenshot.ps1: Starting script."
