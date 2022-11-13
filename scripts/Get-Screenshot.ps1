@@ -21,8 +21,6 @@ Version 1.0: 8/17/2022 - Original version
 
 #>
 
-# Global variables for various logging functions
-
 Function Open-Header {
     <#
     .SYNOPSIS 
@@ -79,7 +77,7 @@ Function Get-Screenshot {
     .SYNOPSIS 
         This function takes a screenshot and saves it as a file.
     .DESCRIPTION
-        This function takes a screenshot and saves it as a file. Uses nircmd.exe and passes a pre-determined file path within the code.
+        This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
         The variables below can be tweaked depending on your use-case:
             - $ScreenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
