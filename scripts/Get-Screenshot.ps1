@@ -1,10 +1,11 @@
 <#PSScriptInfo
 
-.VERSION 1.4
+.VERSION 1.5
 
 .AUTHOR Dean Tammam
 .TAGS Get-Screenshot
 .RELEASENOTES
+Version 1.5: 12/15/2022 - Updated try/catch/finally, starting CSharp for Alt + Enter to screenshot windowed
 Version 1.4: 10/30/2022 - Rewritten with boxcutter.exe
 Version 1.3: 10/23/2022 - Rewritten with nircmd.exe
 Version 1.2: 8/28/2022 - Added logic to 'stage' picture
@@ -28,15 +29,14 @@ Function Open-Header {
     .DESCRIPTION
         Prepares global variables that will be used for various functions throughout the script. Specifically configured for logging locations and exit codes.
     #>
-    $Global:ScriptName = 'Get-Screenshot.ps1'
-    $Global:SuccessExitCode = '0'
-    $Global:FailureExitCode = '1'
-    $Global:LogFolderPath = "C:\Program Files\_ScriptLogs"
-    $Global:LogFilePath = "$($Global:LogFolderPath)\$($Global:ScriptName).log"
-    $Global:LogTailPath = "$($Global:LogFolderPath)\$($Global:ScriptName)_Transcript.log"
+    $Script:ScriptName = 'Get-Screenshot.ps1'
+    $Script:ExitCode = -1
+    $Script:LogFolderPath = "C:\Program Files\_ScriptLogs"
+    $Script:LogFilePath = "$($Script:LogFolderPath)\$($Script:ScriptName).log"
+    $Script:LogTailPath = "$($Script:LogFolderPath)\$($Script:ScriptName)_Transcript.log"
 
-    if (!(Test-Path -Path $Global:LogFolderPath)) {
-        New-Item -ItemType Directory -Force -Path $Global:LogFolderPath
+    if (!(Test-Path -Path $Script:LogFolderPath)) {
+        New-Item -ItemType Directory -Force -Path $Script:LogFolderPath
     }
 }
 
@@ -52,9 +52,9 @@ Function Write-Log($Message) {
         Write-Log "Script failed with the following exception: $($_)"
     #>
 
-    Add-Content $Global:LogFilePath "$(Get-Date) - $Message"
+    Add-Content $Script:LogFilePath "$(Get-Date) - $Message"
     Write-Output $Message
-    $Global:EventMessage += $Message | Out-String
+    $Script:EventMessage += $Message | Out-String
 }
 
 Function Start-Sound ($Path) {
@@ -86,11 +86,14 @@ Function Get-Screenshot {
 
     $ScreenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-    $FilePath = "C:\Users\me\Pictures\Archived"
-    $Global:File = "$($FilePath)\$($FileName).png"
+    # $FilePath = "C:\Users\me\Pictures\Archived"
+	$FilePath = "C:\Users\Dean\OneDrive\Pictures\Archived"
+    $Script:File = "$($FilePath)\$($FileName).png"
     Start-Process $ScreenshotApp -ArgumentList "$File"
     Start-Sleep -Seconds 2
-    Copy-Item -Path $Global:File -Destination "C:\Users\me\Pictures\Uploads"
+    # Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
+	Copy-Item -Path $Script:File -Destination "C:\Users\dean\OneDrive\Pictures\Uploads"
+
 }
 
 try {
@@ -102,16 +105,40 @@ try {
     Start-Sound ("C:\Games\camera-focus-beep-01.wav")
     Write-Log "Get-Screenshot.ps1: Taking screenshot..."
     Get-Screenshot
-    Write-Log "Get-Screenshot.ps1: Screenshot taken. Saved to $($Global:File)."
+    Write-Log "Get-Screenshot.ps1: Screenshot taken. Saved to $($Script:File)."
     Start-Sound ("C:\Games\camera-shutter-click-01.wav")
 
     Write-Log "Get-Screenshot.ps1: Script succeeded."
-    Stop-Transcript
-    Exit $Global:SuccessExitCode
+    $Script:ExitCode = 0
 }
 
 catch {
     Write-Log "Get-Screenshot.ps1: Script failed with the following exception: $($_)"
-    Stop-Transcript
-    Exit $Global:FailureExitCode
+    $Script:ExitCode = 1
 }
+
+finally {
+	Stop-Transcript
+	Exit $Script:ExitCode
+}
+
+# Test block for Alt + Enter if not DDR. To do:
+# 1. Finalize code snippet for proper SendKEys of ALt Enter
+# 2. Put in an if check for if (!DDR), do this, else continue
+# 3. Standardize and cleanup C# code inclusion
+$AltEnter = @"
+using System;
+namespace AltEnter
+{
+	public class Program
+	{
+		public static void Main(){
+			Console.WriteLine("Hello world!");
+			// SendKeys.Send(%{ENTER});
+		}
+	}
+}
+"@
+ 
+Add-Type -TypeDefinition $AltEnter -Language CSharp	
+Invoke-Expression "[AltEnter.Program]::Main()"
