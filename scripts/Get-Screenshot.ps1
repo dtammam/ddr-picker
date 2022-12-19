@@ -1,20 +1,13 @@
 <#PSScriptInfo
 
-<<<<<<< HEAD
 .VERSION 1.6
-=======
-.VERSION 1.5
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
 
 .AUTHOR Dean Tammam
 
 .TAGS Get-Screenshot
 
 .RELEASENOTES
-<<<<<<< HEAD
 Version 1.6: 12/18/2022 - Updated logic for StepMania to switch from full screen to windowed mode for screenshots
-=======
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
 Version 1.5: 12/15/2022 - Updated try/catch/finally, starting CSharp for Alt + Enter to screenshot windowed
 Version 1.4: 10/30/2022 - Rewritten with boxcutter.exe
 Version 1.3: 10/23/2022 - Rewritten with nircmd.exe
@@ -41,7 +34,6 @@ Function Open-Header {
 	.EXAMPLE
         Open-Header
     #>
-<<<<<<< HEAD
 
     $Script:ScriptName = 'Get-Screenshot.ps1'
     $Script:ExitCode = -1
@@ -49,14 +41,6 @@ Function Open-Header {
     $Script:LogFilePath = "$($Script:LogFolderPath)\$($Script:ScriptName).log"
     $Script:LogTailPath = "$($Script:LogFolderPath)\$($Script:ScriptName)_Transcript.log"
 
-=======
-    $Script:ScriptName = 'Get-Screenshot.ps1'
-    $Script:ExitCode = -1
-    $Script:LogFolderPath = "C:\Program Files\_ScriptLogs"
-    $Script:LogFilePath = "$($Script:LogFolderPath)\$($Script:ScriptName).log"
-    $Script:LogTailPath = "$($Script:LogFolderPath)\$($Script:ScriptName)_Transcript.log"
-
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
     if (!(Test-Path -Path $Script:LogFolderPath)) {
         New-Item -ItemType Directory -Force -Path $Script:LogFolderPath
     }
@@ -129,13 +113,9 @@ Function Send-Keystrokes {
 Function Get-Screenshot {
     <#
     .SYNOPSIS 
-<<<<<<< HEAD
 		Takes a screenshot.
-	.DESCRIPTION
-=======
-        This function takes a screenshot and saves it as a file.
+
     .DESCRIPTION
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
         This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
         The variables below can be tweaked depending on your use-case:
@@ -145,7 +125,6 @@ Function Get-Screenshot {
 
     $ScreenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-<<<<<<< HEAD
     $FilePath = "C:\Users\me\Pictures\Archived"
 	#$FilePath = "C:\Users\Dean\OneDrive\Pictures\Archived"
     $Script:File = "$($FilePath)\$($FileName).png"
@@ -153,16 +132,6 @@ Function Get-Screenshot {
     Start-Sleep -Seconds 2
     Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
 	#Copy-Item -Path $Script:File -Destination "C:\Users\dean\OneDrive\Pictures\Uploads"
-=======
-    # $FilePath = "C:\Users\me\Pictures\Archived"
-	$FilePath = "C:\Users\Dean\OneDrive\Pictures\Archived"
-    $Script:File = "$($FilePath)\$($FileName).png"
-    Start-Process $ScreenshotApp -ArgumentList "$File"
-    Start-Sleep -Seconds 2
-    # Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
-	Copy-Item -Path $Script:File -Destination "C:\Users\dean\OneDrive\Pictures\Uploads"
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
-
 }
 
 try {
@@ -170,7 +139,6 @@ try {
     Start-Transcript -Path $LogTailPath -Append
 
     Start-Sound ("C:\Games\camera-focus-beep-01.wav")
-<<<<<<< HEAD
     Write-Log "Taking screenshot..."
 
 	if (Get-Process -Name ITGMania) {
@@ -191,52 +159,15 @@ try {
     Start-Sound ("C:\Games\camera-shutter-click-01.wav")
 
     Write-Log "Script succeeded."
-=======
-    Write-Log "Get-Screenshot.ps1: Taking screenshot..."
-    Get-Screenshot
-    Write-Log "Get-Screenshot.ps1: Screenshot taken. Saved to $($Script:File)."
-    Start-Sound ("C:\Games\camera-shutter-click-01.wav")
-
-    Write-Log "Get-Screenshot.ps1: Script succeeded."
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
     $Script:ExitCode = 0
 }
 
 catch {
-<<<<<<< HEAD
     Write-Log "Script failed with the following exception: $($_)"
-=======
-    Write-Log "Get-Screenshot.ps1: Script failed with the following exception: $($_)"
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
     $Script:ExitCode = 1
 }
 
 finally {
 	Stop-Transcript
 	Exit $Script:ExitCode
-<<<<<<< HEAD
 }
-=======
-}
-
-# Test block for Alt + Enter if not DDR. To do:
-# 1. Finalize code snippet for proper SendKEys of ALt Enter
-# 2. Put in an if check for if (!DDR), do this, else continue
-# 3. Standardize and cleanup C# code inclusion
-$AltEnter = @"
-using System;
-namespace AltEnter
-{
-	public class Program
-	{
-		public static void Main(){
-			Console.WriteLine("Hello world!");
-			// SendKeys.Send(%{ENTER});
-		}
-	}
-}
-"@
- 
-Add-Type -TypeDefinition $AltEnter -Language CSharp	
-Invoke-Expression "[AltEnter.Program]::Main()"
->>>>>>> 3151a020bda87ff2cc31064735b36fa54984f45e
