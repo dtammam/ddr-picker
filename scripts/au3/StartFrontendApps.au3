@@ -21,7 +21,7 @@ Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiClou
 ; Launch relevant apps.
 Run("C:\pegasus\Plus-Get-Screenshot.exe")
 Run("C:\pegasus\Slash-Get-Screenshot.exe")
-Run("C:\pegasus\Spacebar-KillAllAndResetPegasus.exe")
+Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
 Run("C:\pegasus\Tilde-RestartComputer.exe")
 Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
 Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")

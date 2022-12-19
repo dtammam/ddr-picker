@@ -8,6 +8,7 @@
 ;~ 		People who want to be able to launch scripts via button press.
 ;~
 ;~ 	Version:
+;~ 		12/19/2022 - Add a Ctrl modifier to Space.
 ;~ 		9/20/2022 - Original version.
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
@@ -16,13 +17,14 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Hotkey for launching the app.
 Global $Pressed
-HotKeySet("{SPACE}", "Start_Program")
+HotKeySet("^{SPACE}", "Start_Program")
 
 ; Variable to update for our specified file.
 $File = 'C:\pegasus\scripts\KillAllAndResetPegasus.ps1'
 
 ; Neverending loop, waiting on the $Pressed variable.
 While True
+	
 	If $Pressed Then
 		; Specific line that calls PowerShell.exe to launch our script.
 		Runwait("powershell.exe -WindowStyle Hidden -File " & $File & "", "", @SW_HIDE)

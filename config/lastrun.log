@@ -1,0 +1,35 @@
+2022-12-19T17:41:04 [i] Pegasus alpha16-42-g996720eb (2022-07-29)
+2022-12-19T17:41:04 [i] Running on Windows 10 Version 2009 (x86_64, windows)
+2022-12-19T17:41:04 [i] Qt version 5.15.3
+2022-12-19T17:41:04 [i] Program settings loaded (`C:/pegasus/config/settings.txt`)
+2022-12-19T17:41:04 [i] Found locale `ar`
+2022-12-19T17:41:04 [i] Found locale `bs`
+2022-12-19T17:41:04 [i] Found locale `de`
+2022-12-19T17:41:04 [i] Found locale `en-GB`
+2022-12-19T17:41:04 [i] Found locale `en`
+2022-12-19T17:41:04 [i] Found locale `es`
+2022-12-19T17:41:04 [i] Found locale `fr`
+2022-12-19T17:41:04 [i] Found locale `hu`
+2022-12-19T17:41:04 [i] Found locale `ja`
+2022-12-19T17:41:04 [i] Found locale `ko`
+2022-12-19T17:41:04 [i] Found locale `lt`
+2022-12-19T17:41:04 [i] Found locale `nl`
+2022-12-19T17:41:04 [i] Found locale `pt-BR`
+2022-12-19T17:41:04 [i] Found locale `ru`
+2022-12-19T17:41:04 [i] Found locale `zh-TW`
+2022-12-19T17:41:04 [i] Found locale `zh`
+2022-12-19T17:41:04 [i] Locale set to `en`
+2022-12-19T17:41:04 [i] Found theme `Pegasus Grid` at `:/themes/pegasus-theme-grid/`
+2022-12-19T17:41:04 [i] Found theme `Pegasus Grid Micro` at `C:/pegasus/themes/micro/`
+2022-12-19T17:41:04 [i] SDL version 2.0.20
+2022-12-19T17:41:04 [i] Theme set to `Pegasus Grid Micro` (`C:/pegasus/themes/micro/`)
+2022-12-19T17:41:04 [i] Metafiles: Found `C:\pegasus\config\metafiles\dancingstage.metadata.pegasus.txt`
+2022-12-19T17:41:04 [i] Metafiles: Found `C:\pegasus\config\metafiles\ddr.metadata.pegasus.txt`
+2022-12-19T17:41:04 [i] Metafiles: Found `C:\pegasus\config\metafiles\itg.metadata.pegasus.txt`
+2022-12-19T17:41:04 [i] Metafiles: Finished searching in 1ms
+2022-12-19T17:41:04 [i] Media: Finished searching in 0ms
+2022-12-19T17:41:04 [i] Favorites: Finished searching in 0ms
+2022-12-19T17:41:04 [i] Playtime: Finished searching in 7ms
+2022-12-19T17:41:04 [i] Game list post-processing took 0ms
+2022-12-19T17:41:04 [i] 23 games found
+2022-12-19T17:41:14 [i] Closing Pegasus, goodbye!
