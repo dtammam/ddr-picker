@@ -1,27 +1,39 @@
 <#PSScriptInfo
 
-.VERSION 1.6
+.VERSION 1.7
 
-.AUTHOR Dean Tammam
+.GUID 7990f914-75e8-4f35-b0e6-71ecabf672e9        
+.AUTHOR dean@tamm.am
+
+.COMPANYNAME
+
+.COPYRIGHT
 
 .TAGS Get-Screenshot
 
+.LICENSEURI
+
+.PROJECTURI https://github.com/dtammam/ddr-picker
+
+.ICONURI
+
+.EXTERNALMODULEDEPENDENCIES
+
+.REQUIREDSCRIPTS
+
+.EXTERNALSCRIPTDEPENDENCIES
+
 .RELEASENOTES
-Version 1.6: 12/18/2022 - Updated logic for StepMania to switch from full screen to windowed mode for screenshots
-Version 1.5: 12/15/2022 - Updated try/catch/finally, starting CSharp for Alt + Enter to screenshot windowed
-Version 1.4: 10/30/2022 - Rewritten with boxcutter.exe
-Version 1.3: 10/23/2022 - Rewritten with nircmd.exe
-Version 1.2: 8/28/2022 - Added logic to 'stage' picture
-Version 1.1: 8/27/2022 - Code block for sound 
-Version 1.0: 8/17/2022 - Original version
+Now contains updated logic for StepMania to switch from full screen to windowed mode for screenshots
+
+.PRIVATEDATA
+
 #>
 
 <#
-.SYNOPSIS
-    The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
+
 .DESCRIPTION
-    The audience is automation-oriented screenshotters.
-.NOTES
+    The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
 
 #>
 
@@ -114,7 +126,6 @@ Function Get-Screenshot {
     <#
     .SYNOPSIS 
 		Takes a screenshot.
-
     .DESCRIPTION
         This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
@@ -126,12 +137,10 @@ Function Get-Screenshot {
     $ScreenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
     $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
     $FilePath = "C:\Users\me\Pictures\Archived"
-	#$FilePath = "C:\Users\Dean\OneDrive\Pictures\Archived"
     $Script:File = "$($FilePath)\$($FileName).png"
     Start-Process $ScreenshotApp -ArgumentList "$File"
     Start-Sleep -Seconds 2
     Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
-	#Copy-Item -Path $Script:File -Destination "C:\Users\dean\OneDrive\Pictures\Uploads"
 }
 
 try {
