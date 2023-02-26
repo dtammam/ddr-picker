@@ -139,7 +139,7 @@ Function Get-Screenshot {
     $FilePath = "C:\Users\me\Pictures\Archived"
     $Script:File = "$($FilePath)\$($FileName).png"
     Start-Process $ScreenshotApp -ArgumentList "$File"
-    Start-Sleep -Seconds 2
+    Start-Sleep -Seconds 1
     Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
 }
 
@@ -154,9 +154,9 @@ try {
 		$wshell = New-Object -ComObject wscript.shell;
 		$wshell.AppActivate('Simply Love')
 		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-		Start-Sleep -Seconds 5
+		Start-Sleep -Seconds 1
 		Get-Screenshot
-		Start-Sleep -Seconds 3
+		Start-Sleep -Seconds 2
 		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
 	}
 
