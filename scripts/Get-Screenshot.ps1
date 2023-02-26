@@ -149,21 +149,7 @@ try {
 
     Start-Sound ("C:\Games\camera-focus-beep-01.wav")
     Write-Log "Taking screenshot..."
-
-	if (Get-Process -Name ITGMania) {
-		$wshell = New-Object -ComObject wscript.shell;
-		$wshell.AppActivate('Simply Love')
-		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-		Start-Sleep -Seconds 1
-		Get-Screenshot
-		Start-Sleep -Seconds 2
-		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-	}
-
-	else {
-		Get-Screenshot
-	}
-
+    Get-Screenshot
     Write-Log "Screenshot taken. Saved to $($Script:File)."
     Start-Sound ("C:\Games\camera-shutter-click-01.wav")
 
