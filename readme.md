@@ -41,7 +41,6 @@ file: C:\pegasus\games\stepmania\StartITGMania.exe
 sortBy: a
 launch: {file.path}
 assets.box_front: assets/simplylove.png
-
 ```
 
 You're probably thinking, what's StartITGMania.exe/why are we not pointing to it in `C:\Games`? Good question!
@@ -131,7 +130,6 @@ Once compiled, I save the .exe's here:
 ```
 "C:\pegasus\F2-RegistryUpdateKioskToPC.exe"
 "C:\pegasus\F3-RegistryUpdatePCToKiosk.exe"
-
 ```
 
 To explain why we need to do any of this...
@@ -252,7 +250,7 @@ If you got this far, you now have a pretty awesome kiosk style utility machine t
 - `C:\pegasus\scripts\StartMAME.ps1` - A way to programmatically launch MAME games consistently.
 
 ## Contributing
-Pull requests are welcome - just reachout! This was a carefully crafted setup and a lot of thought went into it, I'd love to see where you're taking it.
+Pull requests are welcome - just reach out! This was a carefully crafted setup and a lot of thought went into it, I'd love to see where you're taking it.
 For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
