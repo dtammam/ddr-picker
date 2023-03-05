@@ -17,6 +17,13 @@ https://user-images.githubusercontent.com/75964108/222937405-d089f0f8-5f87-4cc6-
 2. Create a new directory named `C:\Games` and move any of your games into it.
 3. Install [bemani-mame](https://archive.org/download/ddr573-mame/ddr573-mame.zip) if you're intending on using with 573-based games by downloading and placing in `C:\pegasus\games\ddr573-mame\roms`
 4. Install [AutoIT and SCiTE](https://www.autoitscript.com/site/autoit/downloads/). Additionally, I'd recommend installing [VSCode](https://code.visualstudio.com/download) and the AutoIT extension for it once its' installed.
+5. Open PowerShell as admin and run the following command to allow key PowerShell scripts to launch:
+
+```powershell
+Set-ExecutionPolicy Bypass -Force
+```
+6. Be prepared to allow the .exe files within this process to be allowed by Windows Defender. Since these are not signed and are changing system-level things, they will likely be flagged as viruses.
+The majority of the .exe's in this project are simply compiled AutoIT .au3 files which you have the ability to review in this repo.
 
 ### Initial Configuration
 1. Test `C:\pegasus\pegasus-fe.exe` to see if it launches. It should launch with a set of games that are not functional.
