@@ -13,13 +13,13 @@ https://user-images.githubusercontent.com/75964108/222937405-d089f0f8-5f87-4cc6-
 ## Installation
 
 ### Preparation
-1. Download this repo and place inside a directory named `C:\pegasus`.
+1. Download this repo and place inside a directory named `C:\pegasus`
 2. Create a new directory named `C:\Games` and move any of your games into it.
-3. Install [bemani-mame](https://archive.org/download/ddr573-mame/ddr573-mame.zip) if you're intending on using with 573-based games by downloading and placing in `C:\pegasus\games\ddr573-mame\roms`.
+3. Install [bemani-mame](https://archive.org/download/ddr573-mame/ddr573-mame.zip) if you're intending on using with 573-based games by downloading and placing in `C:\pegasus\games\ddr573-mame\roms`
 4. Install [AutoIT and SCiTE](https://www.autoitscript.com/site/autoit/downloads/). Additionally, I'd recommend installing [VSCode](https://code.visualstudio.com/download) and the AutoIT extension for it once its' installed.
 
 ### Initial Configuration
-1. Test `C:\pegasus\pegasus-fe.exe` to see if it launches. It should launch with a set of games that are most likely not actually functional. If this is the case, good!
+1. Test `C:\pegasus\pegasus-fe.exe` to see if it launches. It should launch with a set of games that are not functional.
 2. Go to `C:\pegasus\config\metafiles` and open/review the metafiles inside:
 
 ```
@@ -48,14 +48,14 @@ You're probably thinking, what's StartITGMania.exe/why are we not pointing to it
 ### Setup the Pointer Executables
 Pegasus is great but has issues dealing with spaces in paths and generally doesn't play well with straight executables. With AutoIT, we'll be creating our own .exe's that open the games - it plays very nicely with Pegasus.
 
-1. Review my scripts in either `C:\pegasus\games\stepmania\scripts` or `C:\pegasus\games\ddr573-mame\scripts\au3` in VSCode. For our example, open `C:\pegasus\games\stepmania\scripts\StartITGMania.au3`.
+1. Review my scripts in either `C:\pegasus\games\stepmania\scripts` or `C:\pegasus\games\ddr573-mame\scripts\au3` in VSCode. For our example, open `C:\pegasus\games\stepmania\scripts\StartITGMania.au3`
 2. Update the line where we are running the actual game executable. In this script, it is literally the last line:
 
 ```autoit
 ;~ 	StartITGMania.au3
 ;~
 ;~ 	Goal:
-;~		The purpose of this .au3 is to launch the relevant ROM on launch from the frontend. It'll close the frontend launcher, start the relevant prerequisite apps, and hten launch the game via PowerShell script.
+;~		The purpose of this .au3 is to launch the relevant ROM on launch from the frontend. It'll close the frontend launcher, start the relevant prerequisite apps, and then launch the game via PowerShell script.
 ;~
 ;~ 	Audience:
 ;~ 		People who want to be able to launch scripts on startup.
@@ -97,7 +97,7 @@ DefaultUserName - REG_SZ - *The computer username*
 4. Restart your computer and make sure that the computer automatically logs in without you needing to do anything.
 
 #### Audio Switch
-Our Kiosk mode wont' have access to the built-in audio controls for muting or changing volume so you'll need a small utility for it.
+Our Kiosk mode won't have access to the built-in audio controls for muting or changing volume so you'll need a small utility for it.
 1. Download [AudioSwitch](https://github.com/sirWest/AudioSwitch) and install it.
 2. Open it and on the `General` tab enable `Show OSD`
 3. On the `Hot Keys` tab map the following functions:
@@ -108,7 +108,7 @@ TogglePlaybackMute - Checked - VolumeMute
 Playback VolumeDown - Checked - VolumeDown
 PlaybackVolumeUp - Checked - VolumeUp
 ```
-4. Select `Apply Hotkeys & Close`.
+4. Select `Apply Hotkeys & Close
 5. Test by pressing VolumeUp and VolumeDown with your keyboard and confirm that you see a little GUI in the top-left showing the volume being changed.
 
 #### Kiosk Mode/PC Mode Scripts
@@ -238,9 +238,9 @@ You can read the script and each script it calls to get an idea of exactly what 
 #### Startup Apps
 We're going to make this a utility machine which means most basic stuff won't startup since we won't be launching `explorer.exe` on login. In Kiosk mode, the only thing that starts on login is `C:\pegasus\StartFrontendApps.exe` and the apps it calls. Let's make other things that matter startup:
 1. Create a shortcut for `AudioSwitch.exe` and save it in 
-`C:\Users\me\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
-2. Create a shortcut for `F2-RegistryUpdateKioskToPC.exe` in `C:\Users\me\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
-3. Create a shortcut for `F3-RegistryUpdatePCToKiosk.exe` in `C:\Users\me\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+`C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+2. Create a shortcut for `F2-RegistryUpdateKioskToPC.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+3. Create a shortcut for `F3-RegistryUpdatePCToKiosk.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
 ### Optional Elements
 If you got this far, you now have a pretty awesome kiosk style utility machine that lets you run your DDR machine like a boss, quickly switching between mixes with a crisp and fast UI. There are things I've left in the repo which you may or may not find useful or want to use:
