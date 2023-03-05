@@ -3,8 +3,6 @@
 ddr-picker is a is a [pegasus-fe](https://pegasus-frontend.org/)-based game frontend for Dance Dance Revolution cabinets.
 It was originally created by [evanclue](https://github.com/evanclue/ddr-picker) and has been rewritten by myself in an effort to modernize the codebase and add new functionality.
 
-<video src="https://imgur.com/a/81v8gLq.mp4" controls="controls">
-
 ## Abstract
 - Private DDR machines are cool. 
 - Purpose-built computers are cool.
