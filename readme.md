@@ -256,4 +256,4 @@ Pull requests are welcome - just reachout! This was a carefully crafted setup an
 For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-[MIT](https://github.com/dtammam/ddr-picker/blob/main/license.md)
+[MIT](https://github.com/dtammam/ddr-picker/blob/main/license.txt)
