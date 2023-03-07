@@ -115,7 +115,7 @@ TogglePlaybackMute - Checked - VolumeMute
 Playback VolumeDown - Checked - VolumeDown
 PlaybackVolumeUp - Checked - VolumeUp
 ```
-4. Select `Apply Hotkeys & Close
+4. Select `Apply Hotkeys & Close`
 5. Test by pressing VolumeUp and VolumeDown with your keyboard and confirm that you see a little GUI in the top-left showing the volume being changed.
 
 #### Kiosk Mode/PC Mode Scripts
