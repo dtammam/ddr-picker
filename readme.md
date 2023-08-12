@@ -112,7 +112,7 @@ Our Kiosk mode won't have access to the built-in audio controls for muting or ch
 ```
 Function - Show OSD - Hot Key
 TogglePlaybackMute - Checked - VolumeMute
-Playback VolumeDown - Checked - VolumeDown
+PlaybackVolumeDown - Checked - VolumeDown
 PlaybackVolumeUp - Checked - VolumeUp
 ```
 4. Select `Apply Hotkeys & Close`
