@@ -2,7 +2,8 @@
 
 .VERSION 1.7
 
-.GUID 7990f914-75e8-4f35-b0e6-71ecabf672e9        
+.GUID 7990f914-75e8-4f35-b0e6-71ecabf672e9   
+
 .AUTHOR dean@tamm.am
 
 .COMPANYNAME
@@ -150,17 +151,17 @@ try {
     Start-Sound ("C:\Games\camera-focus-beep-01.wav")
     Write-Log "Taking screenshot..."
 
+    # StepMania does not seem to play nicely when in full screened mode, momentarily make it windowed and screenshot
 	if (Get-Process -Name ITGMania) {
 		$wshell = New-Object -ComObject wscript.shell;
 		$wshell.AppActivate('Simply Love')
+        Start-Sleep -Seconds 1
 		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-        Start-Sleep -Milliseconds 678
-        Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-		Start-Sleep -Seconds 3
+        Start-Sleep -Seconds 5
 		Get-Screenshot		
-	}
-
-	else {
+        Start-Sleep -Seconds 2        
+        Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
+	} else {
 		Get-Screenshot
 	}
 
@@ -169,9 +170,7 @@ try {
 
     Write-Log "Script succeeded."
     $Script:ExitCode = 0
-}
-
-catch {
+} catch {
     Write-Log "Script failed with the following exception: $($_)"
     $Script:ExitCode = 1
 }
