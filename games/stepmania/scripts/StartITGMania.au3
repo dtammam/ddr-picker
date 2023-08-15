@@ -8,6 +8,7 @@
 ;~
 ;~ 	Version:
 ;~ 		9/20/2022 - Original version.
+;~ 		8/14/2023 - Updating path to new version of ITGMania
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -17,5 +18,5 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
 
 ; Launch the game of choice with the correct working directory.
-FileChangeDir("C:\Games\ITGmania 0.5.1\Program")
-Run('C:\Games\ITGmania 0.5.1\Program\ITGmania.exe', "")
+FileChangeDir("C:\Games\ITGMania 0.7.0\Program")
+Run('C:\Games\ITGMania 0.7.0\Program\ITGMania.exe', "")
