@@ -148,7 +148,7 @@ try {
     Open-Header
     Start-Transcript -Path $LogTailPath -Append
 
-    Start-Sound ("C:\Games\camera-focus-beep-01.wav")
+    Start-Sound ("C:\Games\Megatouch_Click.wav")
     Write-Log "Taking screenshot..."
 
     # StepMania does not seem to play nicely when in full screened mode, momentarily make it windowed and screenshot
@@ -157,16 +157,18 @@ try {
 		$wshell.AppActivate('Simply Love')
         Start-Sleep -Seconds 1
 		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-        Start-Sleep -Seconds 5
+        Start-Sleep -Seconds 4
+        Start-Sound ("C:\Games\Megatouch_ShutterComplete.wav")
 		Get-Screenshot		
-        Start-Sleep -Seconds 2        
+        Start-Sleep -Seconds 1        
         Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
+        Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
 	} else {
 		Get-Screenshot
+        Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
 	}
 
     Write-Log "Screenshot taken. Saved to $($Script:File)."
-    Start-Sound ("C:\Games\camera-shutter-click-01.wav")
 
     Write-Log "Script succeeded."
     $Script:ExitCode = 0
