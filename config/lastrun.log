@@ -1,42 +1,35 @@
-2023-09-02T08:41:11 [i] Pegasus alpha16-42-g996720eb (2022-07-29)
-2023-09-02T08:41:11 [i] Running on Windows 10 Version 2009 (x86_64, windows)
-2023-09-02T08:41:11 [i] Qt version 5.15.3
-2023-09-02T08:41:11 [i] Program settings loaded (`C:/pegasus/config/settings.txt`)
-2023-09-02T08:41:11 [i] Found locale `ar`
-2023-09-02T08:41:11 [i] Found locale `bs`
-2023-09-02T08:41:11 [i] Found locale `de`
-2023-09-02T08:41:11 [i] Found locale `en-GB`
-2023-09-02T08:41:11 [i] Found locale `en`
-2023-09-02T08:41:11 [i] Found locale `es`
-2023-09-02T08:41:11 [i] Found locale `fr`
-2023-09-02T08:41:11 [i] Found locale `hu`
-2023-09-02T08:41:11 [i] Found locale `ja`
-2023-09-02T08:41:11 [i] Found locale `ko`
-2023-09-02T08:41:11 [i] Found locale `lt`
-2023-09-02T08:41:11 [i] Found locale `nl`
-2023-09-02T08:41:11 [i] Found locale `pt-BR`
-2023-09-02T08:41:11 [i] Found locale `ru`
-2023-09-02T08:41:11 [i] Found locale `zh-TW`
-2023-09-02T08:41:11 [i] Found locale `zh`
-2023-09-02T08:41:11 [i] Locale set to `en`
-2023-09-02T08:41:11 [i] Found theme `Pegasus Grid` at `:/themes/pegasus-theme-grid/`
-2023-09-02T08:41:11 [i] Found theme `Pegasus Grid Micro` at `C:/pegasus/themes/micro/`
-2023-09-02T08:41:11 [i] SDL version 2.0.20
-2023-09-02T08:41:11 [i] Theme set to `Pegasus Grid Micro` (`C:/pegasus/themes/micro/`)
-2023-09-02T08:41:12 [i] Metafiles: Found `C:\pegasus\config\metafiles\dancingstage.metadata.pegasus.txt`
-2023-09-02T08:41:12 [i] Metafiles: Found `C:\pegasus\config\metafiles\ddr.metadata.pegasus.txt`
-2023-09-02T08:41:12 [i] Metafiles: Found `C:\pegasus\config\metafiles\itg.metadata.pegasus.txt`
-2023-09-02T08:41:12 [i] Metafiles: Finished searching in 5ms
-2023-09-02T08:41:12 [i] Media: Finished searching in 0ms
-2023-09-02T08:41:12 [i] Favorites: Finished searching in 0ms
-2023-09-02T08:41:12 [i] Playtime: Finished searching in 17ms
-2023-09-02T08:41:12 [i] Game list post-processing took 0ms
-2023-09-02T08:41:12 [i] 25 games found
-2023-09-02T10:50:40 [w] file:///C:/pegasus/themes/micro/GameGridItem.qml:61: TypeError: Cannot read property 'height' of null
-2023-09-02T10:52:32 [i] Executing command: [`C:\pegasus\games\stepmania\StartITGMania.exe`]
-2023-09-02T10:52:32 [i] Working directory: `C:\pegasus\games\stepmania`
-2023-09-02T10:52:32 [i] Process 2480 started
-2023-09-02T10:52:32 [i] ----------------------------------------
-2023-09-02T10:52:33 [i] ----------------------------------------
-2023-09-02T10:52:33 [i] The external program has finished cleanly
-2023-09-02T10:52:34 [w] file:///C:/pegasus/themes/micro/GameGridItem.qml:61: TypeError: Cannot read property 'height' of null
+2023-12-09T16:59:37 [i] Pegasus alpha16-42-g996720eb (2022-07-29)
+2023-12-09T16:59:37 [i] Running on Windows 10 Version 2009 (x86_64, windows)
+2023-12-09T16:59:37 [i] Qt version 5.15.3
+2023-12-09T16:59:37 [i] Program settings loaded (`C:/pegasus/config/settings.txt`)
+2023-12-09T16:59:37 [i] Found locale `ar`
+2023-12-09T16:59:37 [i] Found locale `bs`
+2023-12-09T16:59:37 [i] Found locale `de`
+2023-12-09T16:59:37 [i] Found locale `en-GB`
+2023-12-09T16:59:37 [i] Found locale `en`
+2023-12-09T16:59:37 [i] Found locale `es`
+2023-12-09T16:59:37 [i] Found locale `fr`
+2023-12-09T16:59:37 [i] Found locale `hu`
+2023-12-09T16:59:37 [i] Found locale `ja`
+2023-12-09T16:59:37 [i] Found locale `ko`
+2023-12-09T16:59:37 [i] Found locale `lt`
+2023-12-09T16:59:37 [i] Found locale `nl`
+2023-12-09T16:59:37 [i] Found locale `pt-BR`
+2023-12-09T16:59:37 [i] Found locale `ru`
+2023-12-09T16:59:37 [i] Found locale `zh-TW`
+2023-12-09T16:59:37 [i] Found locale `zh`
+2023-12-09T16:59:37 [i] Locale set to `en`
+2023-12-09T16:59:37 [i] Found theme `Pegasus Grid` at `:/themes/pegasus-theme-grid/`
+2023-12-09T16:59:37 [i] Found theme `Pegasus Grid Micro` at `C:/pegasus/themes/micro/`
+2023-12-09T16:59:37 [i] SDL version 2.0.20
+2023-12-09T16:59:37 [i] Theme set to `Pegasus Grid Micro` (`C:/pegasus/themes/micro/`)
+2023-12-09T16:59:37 [i] Metafiles: Found `C:\pegasus\config\metafiles\dancingstage.metadata.pegasus.txt`
+2023-12-09T16:59:37 [i] Metafiles: Found `C:\pegasus\config\metafiles\ddr.metadata.pegasus.txt`
+2023-12-09T16:59:37 [i] Metafiles: Found `C:\pegasus\config\metafiles\itg.metadata.pegasus.txt`
+2023-12-09T16:59:37 [i] Metafiles: Finished searching in 1ms
+2023-12-09T16:59:37 [i] Media: Finished searching in 0ms
+2023-12-09T16:59:37 [i] Favorites: Finished searching in 0ms
+2023-12-09T16:59:37 [i] Playtime: Finished searching in 8ms
+2023-12-09T16:59:37 [i] Game list post-processing took 0ms
+2023-12-09T16:59:37 [i] 25 games found
+2023-12-09T16:59:38 [w] file:///C:/pegasus/themes/micro/GameGridItem.qml:61: TypeError: Cannot read property 'height' of null

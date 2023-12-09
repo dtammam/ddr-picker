@@ -28,6 +28,7 @@ RestartiCloudLoop.ps1
         9/2/2022 - Conversion from .bat to .ps1
         9/23/2022 - Added logic to save photos to an Archived directory before deleting from Uploads
         10/30/2022 - Removed archive logic as its' now handled in Get-Screenshot.exe
+        12/9/2023 - Updated logic to make it so that failing to delete due to a file being uploaded isn't a hard exception
 
     Return Codes:
         Success - 0
@@ -103,9 +104,13 @@ Try {
 
         # Recurse through the Uploads directory and delete all items in it
         Foreach ($Photo in $Photos) {
-            Remove-Item -Path $Photo
-            Write-Output "iCloud Fix: Successfully deleted $($Photo) in $($PhotoUploadPath)."
-            $DeletedCount += 1
+            try {
+                Remove-Item -Path $Photo
+                Write-Output "iCloud Fix: Successfully deleted $($Photo) in $($PhotoUploadPath)." -ErrorAction Stop
+                $DeletedCount += 1
+            } catch {
+                Write-Warning "Failed to delete $($Photo) with the following exception: $($_.Exception)"
+            }
             Write-Output "iCloud Fix: Successfully deleted $($DeletedCount) photos."
             Continue
         }

@@ -1,2 +1,9 @@
 games/ddr573-mame/roms
 games/ddr573-mame/mame.exe
+games/ddr573-mame/cfg/ddrexproc.cfg
+games/ddr573-mame/cfg/ddrmax.cfg
+games/ddr573-mame/cfg/ddrmax2.cfg
+games/ddr573-mame/nvram/ddrexproc/m48t58
+games/ddr573-mame/nvram/ddrmax/m48t58
+games/ddr573-mame/nvram/ddrmax2/m48t58
+games/ddr573-mame/snap/ddrmax/0001.png
