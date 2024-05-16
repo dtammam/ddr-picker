@@ -23,7 +23,7 @@ function Open-Header {
     $Script:logFilePath = "$($Script:logFolderPath)\$($Script:scriptName).log"
     $Script:logTailPath = "$($Script:logFolderPath)\$($Script:scriptName)_Transcript.log"
 
-    if (!(Test-Path -Path $Script:logFolderPath)) {
+    if (-not (Test-Path -Path $Script:logFolderPath)) {
         New-Item -ItemType Directory -Force -Path $Script:logFolderPath
     }
 }
