@@ -1,44 +1,11 @@
-<#PSScriptInfo
-
-.VERSION 1.7
-
-.GUID 7990f914-75e8-4f35-b0e6-71ecabf672e9   
-
-.AUTHOR dean@tamm.am
-
-.COMPANYNAME
-
-.COPYRIGHT
-
-.TAGS Get-Screenshot
-
-.LICENSEURI
-
-.PROJECTURI https://github.com/dtammam/ddr-picker
-
-.ICONURI
-
-.EXTERNALMODULEDEPENDENCIES
-
-.REQUIREDSCRIPTS
-
-.EXTERNALSCRIPTDEPENDENCIES
-
-.RELEASENOTES
-Now contains updated logic for StepMania to switch from full screen to windowed mode for screenshots
-
-.PRIVATEDATA
-
-#>
-
 <#
-
-.DESCRIPTION
-    The purpose of this script is to screenshot a screen and save a file of the screenshot to a specific location.
-
+.SYNOPSIS
+    Take a screenshot and save to a specific location.
+.NOTES
+   Now contains updated logic for StepMania to switch from full screen to windowed mode for screenshots
 #>
 
-Function Open-Header {
+function Open-Header {
     <#
     .SYNOPSIS 
         Prepares variables.
@@ -47,19 +14,21 @@ Function Open-Header {
 	.EXAMPLE
         Open-Header
     #>
+    [CmdletBinding()]
+    param()
 
-    $Script:ScriptName = 'Get-Screenshot.ps1'
-    $Script:ExitCode = -1
-    $Script:LogFolderPath = "C:\Program Files\_ScriptLogs"
-    $Script:LogFilePath = "$($Script:LogFolderPath)\$($Script:ScriptName).log"
-    $Script:LogTailPath = "$($Script:LogFolderPath)\$($Script:ScriptName)_Transcript.log"
+    $Script:scriptName = 'Get-Screenshot.ps1'
+    $Script:exitCode = -1
+    $Script:logFolderPath = "C:\Program Files\_ScriptLogs"
+    $Script:logFilePath = "$($Script:logFolderPath)\$($Script:scriptName).log"
+    $Script:logTailPath = "$($Script:logFolderPath)\$($Script:scriptName)_Transcript.log"
 
-    if (!(Test-Path -Path $Script:LogFolderPath)) {
-        New-Item -ItemType Directory -Force -Path $Script:LogFolderPath
+    if (!(Test-Path -Path $Script:logFolderPath)) {
+        New-Item -ItemType Directory -Force -Path $Script:logFolderPath
     }
 }
 
-Function Write-Log($Message) {
+function Write-Log {
     <#
     .SYNOPSIS 
         Writes a log.
@@ -70,13 +39,17 @@ Function Write-Log($Message) {
     .EXAMPLE
         Write-Log "Script failed with the following exception: $($_)"
     #>
+    [CmdletBinding()]
+    param(
+        $Message
+    )
 
-    Add-Content $Script:LogFilePath "$(Get-Date) - $Message"
+    Add-Content $Script:logFilePath "$(Get-Date) - $Message"
     Write-Output $Message
-    $Script:EventMessage += $Message | Out-String
+    $Script:eventMessage += $Message | Out-String
 }
 
-Function Start-Sound ($Path) {
+function Start-Sound {
     <#
     .SYNOPSIS 
         Plays a sound.
@@ -87,13 +60,17 @@ Function Start-Sound ($Path) {
 	.EXAMPLE
 		Start-Sound ("C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds-dm_31bf3856ad364e35_10.0.22621.1_none_a9a06b326661fac0\Windows Notify Email.wav")
 	#>
+    [CmdletBinding()]
+    param(
+        $Path
+    )
 
-    $Sound = New-Object System.Media.SoundPlayer
-    $Sound.SoundLocation=$Path
-    $Sound.playsync()
+    $sound = New-Object System.Media.SoundPlayer
+    $sound.SoundLocation=$Path
+    $sound.playsync()
 }
 
-Function Send-Keystrokes {
+function Send-Keystrokes {
 	<#
     .SYNOPSIS 
         Sends keystrokes.
@@ -106,7 +83,7 @@ Function Send-Keystrokes {
     .EXAMPLE
         Send-Keystrokes -WindowTitle 'Command Prompt' -SendKeys '%{ENTER}'
     #>
-
+    [CmdletBinding()]
 	param (
 		$SendKeys,
 		$WindowTitle
@@ -123,7 +100,7 @@ Function Send-Keystrokes {
 	}
 }
 
-Function Get-Screenshot {
+function Get-Screenshot {
     <#
     .SYNOPSIS 
 		Takes a screenshot.
@@ -131,22 +108,24 @@ Function Get-Screenshot {
         This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
         The variables below can be tweaked depending on your use-case:
-            - $ScreenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
+            - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
             - $FilePath can be updated to your screenshot folder
     #>
+    [CmdletBinding()]
+    param()
 
-    $ScreenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
-    $FileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-    $FilePath = "C:\Users\me\Pictures\Archived"
-    $Script:File = "$($FilePath)\$($FileName).png"
-    Start-Process $ScreenshotApp -ArgumentList "$File"
+    $screenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
+    $fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
+    $filePath = "C:\Users\me\Pictures\Archived"
+    $Script:file = "$($filePath)\$($fileName).png"
+    Start-Process $screenshotApp -ArgumentList "$File"
     Start-Sleep -Seconds 1
-    Copy-Item -Path $Script:File -Destination "C:\Users\me\Pictures\Uploads"
+    Copy-Item -Path $Script:file -Destination "C:\Users\me\Pictures\Uploads"
 }
 
 try {
     Open-Header
-    Start-Transcript -Path $LogTailPath -Append
+    Start-Transcript -Path $logTailPath -Append
 
     Start-Sound ("C:\Games\Megatouch_Click.wav")
     Write-Log "Taking screenshot..."
@@ -168,16 +147,13 @@ try {
         Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
 	}
 
-    Write-Log "Screenshot taken. Saved to $($Script:File)."
-
+    Write-Log "Screenshot taken. Saved to $($Script:file)."
     Write-Log "Script succeeded."
-    $Script:ExitCode = 0
+    $Script:exitCode = 0
 } catch {
-    Write-Log "Script failed with the following exception: $($_)"
-    $Script:ExitCode = 1
-}
-
-finally {
+    Write-Log "Script failed with the following exception: $($_.Message)"
+    $Script:exitCode = 1
+} finally {
 	Stop-Transcript
-	Exit $Script:ExitCode
+	exit $Script:exitCode
 }
