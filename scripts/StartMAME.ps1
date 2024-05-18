@@ -7,18 +7,19 @@
 
 # Parameters to launch the .ps1 script from a command line
 param (
-    [String]$Global:ROMAndState = (Read-Host "Please input ROM and save state.")
+    [Parameter(Mandatory)]
+    [ValidateNotNullOrEmpty()]
+    [string]$Global:ROMAndState = (Read-Host "Please input ROM and save state.")
 )
-
 # Import core modules relevant for all scripts
 [string]$coreFunctionsModule = "$PSScriptRoot\CoreFunctions.psm1"
 Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
 $Host.UI.RawUI.WindowTitle = $scriptName
-$Global:executablePath = 'C:\pegasus\games\ddr573-mame\'
-$Global:executable = 'mame.exe'
-$Global:iniPath = '-inipath C:\pegasus\games\ddr573-mame\'
+[string]$Global:executablePath = 'C:\pegasus\games\ddr573-mame\'
+[string]$Global:executable = 'mame.exe'
+[string]$Global:iniPath = '-inipath C:\pegasus\games\ddr573-mame\'
 
 try {
     Open-Header
@@ -30,7 +31,9 @@ try {
     function Start-MAME {
         [CmdletBinding()]
         param(
-            $Global:ROMAndState
+            [Parameter(Mandatory)]
+            [ValidateNotNullOrEmpty()]
+            [string]$Global:ROMAndState
         )
 
         Start-Process -FilePath "$($Global:executablePath)\$($Global:executable)" -ArgumentList "$($Global:iniPath) $($Global:ROMAndState)"
@@ -40,7 +43,6 @@ try {
     Write-Log "Cabinet: Launching MAME.exe with $($Global:ROMAndState)..."
     Start-MAME ($Global:ROMAndState)
     Write-Log "Cabinet: launched MAME.exe."
-
     $Script:exitCode = 0
 } catch {
     Write-Log "Script failed with the following exception: [$($_.Message)]"
