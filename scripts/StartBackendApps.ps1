@@ -20,7 +20,7 @@ try {
     Start-Process "C:\Program Files (x86)\Common Files\Apple\Internet Services\iCloudPhotos.exe"
     Start-Process "C:\Program Files (x86)\Common Files\Apple\Internet Services\iCloudServices.exe"
     Write-Output "All backend services started successfully."
-    
+
     $Script:exitCode = 0
 } catch {
     Write-Output "Script failed with the following exception: [$($_.Message)]"
