@@ -52,6 +52,9 @@ function Write-Log {
     #>
     [CmdletBinding()]
     param(
+        [Parameter(Mandatory)]
+        [string]
+        [ValidateNotNullOrEmpty()]
         $Message
     )
 
@@ -73,6 +76,9 @@ function Start-Sound {
 	#>
     [CmdletBinding()]
     param(
+        [Parameter(Mandatory)]
+        [string]
+        [ValidateNotNullOrEmpty()]
         $Path
     )
 
@@ -96,15 +102,22 @@ function Send-Keystrokes {
     #>
     [CmdletBinding()]
 	param (
+        [Parameter(Mandatory)]
+        [string]
+        [ValidateNotNullOrEmpty()]
 		$SendKeys,
+
+        [Parameter(Mandatory)]
+        [string]
+        [ValidateNotNullOrEmpty()]
 		$WindowTitle
 	)
 
 	$wshell = New-Object -ComObject wscript.shell;
 
 	if ($WindowTitle) {
-			$wshell.AppActivate($WindowTitle)
-		}
+        $wshell.AppActivate($WindowTitle)
+	}
 
 	if ($SendKeys) {
 		$wshell.SendKeys($SendKeys)
