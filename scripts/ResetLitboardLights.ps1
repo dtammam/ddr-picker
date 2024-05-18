@@ -11,8 +11,8 @@ Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
 $Host.UI.RawUI.WindowTitle = $scriptName
-$lightExecutable = "LightsTest"
-$lightUtility = "C:\pegasus\scripts\exe\$($lightExecutable).exe"
+[string]$lightExecutable = "LightsTest"
+[string]$lightUtility = "C:\pegasus\scripts\exe\$($lightExecutable).exe"
 
 try {
     Open-Header
