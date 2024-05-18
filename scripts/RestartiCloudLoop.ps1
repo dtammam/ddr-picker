@@ -1,44 +1,30 @@
 <#
 .SYNOPSIS
     Make iCloud Photo uploads consistent from a Windows machine.
-.DESCRIPTION
-    I'm not sure if you use an iPhone with iCloud for your cloud photo storage while also managing pictures from
-    Windows computers... but if you have, you know it's not great. If you've struggled like me (seeing it behave
-    inconsistently, not working at times), then this script might help you. It creates a neverending loop which:
-        - Stops iCloud Services 
-        - Stops iCloud Photos
-        - Starts iCloud Services
-        - Starts iCloud Photos
-        - Waits 5 minutes
-        - Goes to your Uploads and deletes everything inside
-        - Restarts the loop
-
-    The reason why is because the only way I found iCloud on Windows to work consistently was to restart it
-    very regularly. The 5 minute delay is to give your device time to receive photos and actually upload them. 
-    If you find photos on your phone that you'd rather delete... they'll come back if still in the uploads folder 
-    after a service restart - which is why this deletes them from 'Uploads' each go around.
-
-    My use-case was for a Dance Dance Revolution machine with a button to take a photo and save into Uploads. 
-    I figure this could be useful for similar utility machine use-cases or even just general better behavior for 
-    photographers or others who need Windows and iCloud for a workflow.
 .NOTES
-    8/27/2022 - Original version
-    9/2/2022 - Conversion from .bat to .ps1
-    5/16/2024 - Standardizing formatting in alignment with PowerShell best practices
-
+    The only way I found iCloud on Windows to work consistently was to restart it very regularly. 
+    The 5 minute delay is to give your device time to receive photos and actually upload them. 
+.LINK
     One person referencing the issue: https://www.reddit.com/r/iCloud/comments/lptouf/icloud_photos_for_windows/
 #>
+
+# Import core modules relevant for all scripts
+[string]$coreFunctionsModule = "$PSScriptRoot\CoreFunctions.psm1"
+Import-Module -Name $coreFunctionsModule -Force
+
+# Variable declaration
+$Host.UI.RawUI.WindowTitle = $scriptName
+
+# Variable declaration
+[bool]$loop = $True
+[string]$applePath = "C:\Program Files (x86)\Common Files\Apple\Internet Services\"
+[string]$iCloudServices = "iCloudServices"
+[string]$iCloudPhotos = "iCloudPhotos"
+[string]$photoUploadPath = "C:\Users\me\Pictures\Uploads\"
+[int]$deletedCount = 0
+
 try {
-    # Variable declaration
-    [int]$exitCode = -1
-    [bool]$loop = $True
-    [string]$Host.Ui.RawUI.WindowTitle = "Restart iCloud Loop"
-    [string]$applePath = "C:\Program Files (x86)\Common Files\Apple\Internet Services\"
-    [string]$iCloudServices = "iCloudServices"
-    [string]$iCloudPhotos = "iCloudPhotos"
-    [string]$photoUploadPath = "C:\Users\me\Pictures\Uploads\"
-    [string]$photos = (Get-ChildItem $photoUploadPath -Recurse).FullName
-    [int]$deletedCount = 0
+    Open-Header
 
     # A neverending While loop with our arbitrary variable to make this script run indefinitely
     while ($loop -eq $True) {
@@ -86,12 +72,12 @@ try {
         Start-Sleep -Seconds 300
 
         # Recurse through the Uploads directory and delete all items in it
+        $photos = (Get-ChildItem $photoUploadPath -Recurse).FullName
         foreach ($photo in $photos) {
             Remove-Item -Path $photo
             Write-Output "iCloud Fix: Successfully deleted [$($photo)] in [$($photoUploadPath)]."
             $deletedCount += 1
             Write-Output "iCloud Fix: Successfully deleted [$($deletedCount)] photos."
-            continue
         }
 
         # Restart the loop
@@ -101,7 +87,7 @@ try {
     }
     $exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_)]"
+    Write-Output "Script failed with the following exception: [$($_.Message)]"
     $exitCode = 1
 } finally {
     Write-Output "Script completed successfully. Exiting..."
