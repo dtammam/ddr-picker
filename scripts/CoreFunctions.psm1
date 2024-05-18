@@ -53,9 +53,8 @@ function Write-Log {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [string]
         [ValidateNotNullOrEmpty()]
-        $Message
+        [string]$Message
     )
 
     Add-Content $Script:logFilePath "$(Get-Date) - $Message"
@@ -77,9 +76,8 @@ function Start-Sound {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
-        [string]
         [ValidateNotNullOrEmpty()]
-        $Path
+        [string]$Path
     )
 
     $sound = New-Object System.Media.SoundPlayer
@@ -103,25 +101,17 @@ function Send-Keystrokes {
     [CmdletBinding()]
 	param (
         [Parameter(Mandatory)]
-        [string]
         [ValidateNotNullOrEmpty()]
-		$SendKeys,
+		[string]$SendKeys,
 
         [Parameter(Mandatory)]
-        [string]
         [ValidateNotNullOrEmpty()]
-		$WindowTitle
+		[string]$WindowTitle
 	)
 
 	$wshell = New-Object -ComObject wscript.shell;
-
-	if ($WindowTitle) {
-        $wshell.AppActivate($WindowTitle)
-	}
-
-	if ($SendKeys) {
-		$wshell.SendKeys($SendKeys)
-	}
+	if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
+	if ($SendKeys) { $wshell.SendKeys($SendKeys) }
 }
 
 function Get-Screenshot {
