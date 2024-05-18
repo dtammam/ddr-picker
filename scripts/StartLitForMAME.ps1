@@ -13,16 +13,15 @@ Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
 $Host.UI.RawUI.WindowTitle = $scriptName
-$ExePath = 'C:\pegasus\scripts\exe\mame2lit.exe'
+[string]$executablePath = 'C:\pegasus\scripts\exe\mame2lit.exe'
 
 try {
     Open-Header
 
     # Launch mame2lit.exe
     Write-Output "Cabinet: Launching mame2lit.exe..."
-    Start-Process -WindowStyle Hidden -FilePath $ExePath
+    Start-Process -WindowStyle Hidden -FilePath $executablePath
     Write-Output "Cabinet: launched mame2lit.exe."
-
     $Script:exitCode = 0
 } catch {
     Write-Output "Script failed with the following exception: [$($_.Message)]"
