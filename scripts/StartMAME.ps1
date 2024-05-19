@@ -40,9 +40,9 @@ try {
     }
 
     # Start MAME.exe
-    Write-Log "Cabinet: Launching MAME.exe with $($Global:ROMAndState)..."
+    Write-Log "Launching MAME.exe with $($Global:ROMAndState)..."
     Start-MAME ($Global:ROMAndState)
-    Write-Log "Cabinet: launched MAME.exe."
+    Write-Log "Launched MAME.exe."
     $Script:exitCode = 0
 } catch {
     Write-Log "Script failed with the following exception: [$($_.Message)]"
