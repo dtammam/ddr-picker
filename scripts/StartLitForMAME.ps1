@@ -19,12 +19,12 @@ try {
     Open-Header
 
     # Launch mame2lit.exe
-    Write-Output "Cabinet: Launching mame2lit.exe..."
+    Write-Log "Launching mame2lit.exe..."
     Start-Process -WindowStyle Hidden -FilePath $executablePath
-    Write-Output "Cabinet: launched mame2lit.exe."
+    Write-Log "Launched mame2lit.exe."
     $Script:exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $Script:exitCode = 1
 } finally {
     exit $Script:exitCode

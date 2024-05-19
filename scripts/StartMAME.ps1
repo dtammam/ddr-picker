@@ -40,7 +40,7 @@ try {
     }
 
     # Start MAME.exe
-    Write-Log "Launching MAME.exe with $($Global:ROMAndState)..."
+    Write-Log "Launching MAME.exe with [$($Global:ROMAndState)]..."
     Start-MAME ($Global:ROMAndState)
     Write-Log "Launched MAME.exe."
     $Script:exitCode = 0
