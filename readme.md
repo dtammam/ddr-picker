@@ -119,18 +119,6 @@ We're going to consider you being on your desktop `PC Mode` and you being on a m
 ### Explanation of Startup Scripts
 Here's `C:\pegasus\scripts\au3\StartFrontendApps.au3` which is compiled to the .exe which is set in that registry key by the PowerShell script above:
 ```autoit
-;~ 	StartFrontendApps.au3
-;~
-;~ 	Goal:
-;~		The purpose of this .au3 is to launch the relevant applications when the system starts. This will replace explorer.exe as the shell.
-;~
-;~ 	Audience:
-;~ 		People who want to be able to launch scripts on startup.
-;~
-;~ 	Version:
-;~ 		9/20/2022 - Original version.
-;~ 		10/23/2022 -  - Migration to nircmd.exe for improved screenshot resolution (Plus-Get-Screenshot.exe and Slash-Get-Screenshot.exe)
-
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
 _WinAPI_Wow64EnableWow64FsRedirection(False)
@@ -140,8 +128,8 @@ Run("powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApp
 Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1", "", @SW_HIDE)
 
 ; Launch relevant apps.
-Run("C:\pegasus\Plus-Get-Screenshot.exe")
-Run("C:\pegasus\Slash-Get-Screenshot.exe")
+Run("C:\pegasus\Plus-GetScreenshot.exe")
+Run("C:\pegasus\Slash-GetScreenshot.exe")
 Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
 Run("C:\pegasus\Tilde-RestartComputer.exe")
 Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
@@ -158,7 +146,7 @@ You can read the script and each script it calls to get an idea of exactly what 
 - It is launched on system startup instead of `explorer.exe`
 - It starts any backend apps that we care about
 - It lets us press `F2`/`F3` to switch modes from Kiosk to PC/PC to Kiosk
-- It lets us press `backtic` to restart the computer
+- It lets us press ``` ` ``` to restart the computer
 - It lets us press `Ctrl + Spacebar` to close everything and reset Pegasus
 - It starts Pegasus for the first time
 
@@ -172,7 +160,7 @@ When in `Kiosk mode,` most standard things won't startup since we won't be launc
 3. Create a shortcut for `F3-RegistryUpdatePCToKiosk.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
 ## Optional Elements
-- `Plus-Get-Screenshot.au3`, `Slash-Get-Screenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key.
+- `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key.
 - `StartLitForMAME.ps1`: Enable Litboard-powered lights for 573-MAME games.
 - `RestartiCloudLoop.ps1`: Ensure iCloud photo uploads work.
 - `StartMAME.ps1`: Consistently launch MAME games.
