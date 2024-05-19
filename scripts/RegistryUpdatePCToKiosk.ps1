@@ -28,7 +28,7 @@ try {
     New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force
     Write-Log "Modified [$($name)] to [$($value)]."
 
-    Write-Log "Restarting Computer now..."
+    Write-Log "Restarting computer now..."
     Restart-Computer
     $script:exitCode = 0
 } catch {
