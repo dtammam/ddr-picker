@@ -1,3 +1,26 @@
+function Get-Screenshot {
+    <#
+    .SYNOPSIS 
+		Takes a screenshot.
+    .DESCRIPTION
+        This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
+    .NOTES
+        The variables below can be tweaked depending on your use-case:
+            - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
+            - $FilePath can be updated to your screenshot folder
+    #>
+    [CmdletBinding()]
+    param()
+
+    $screenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
+    $fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
+    $filePath = "C:\Users\me\Pictures\Archived"
+    $Script:file = "$($filePath)\$($fileName).png"
+    Start-Process $screenshotApp -ArgumentList "$File"
+    Start-Sleep -Seconds 1
+    Copy-Item -Path $Script:file -Destination "C:\Users\me\Pictures\Uploads"
+}
+
 function Open-Header {
     <#
     .SYNOPSIS 
@@ -26,40 +49,49 @@ function Open-Header {
 
     # Define other script-level variables
     $Script:exitCode = -1
-    $Script:logFolderPath = "C:\Program Files\_ScriptLogs"
+    $Script:logFolderPath = "C:\Program Files\_scriptLogs"
     $Script:logFilePath = "$($Script:logFolderPath)\$scriptName.log"
     $Script:logTailPath = "$($Script:logFolderPath)\$scriptName_Transcript.log"
 
+    # Creare our log folder directory if it doesn't exist
     if (-not (Test-Path -Path $Script:logFolderPath)) {
         New-Item -ItemType Directory -Force -Path $Script:logFolderPath
     }
 
     # Your existing log writing and initialization logic here
-    Write-Output "Header opened for script: $scriptName"
+    Write-Log "Header opened for script: $scriptName"
 }
 
-
-function Write-Log {
-    <#
+function Send-Keystrokes {
+	<#
     .SYNOPSIS 
-        Writes a log.
+        Sends keystrokes.
     .DESCRIPTION
-        Writes to a log file. Names it after the script and empowers you to use a similarly-formatted transcript file across your different scripts for reviewing results.
-    .PARAMETER $Message
-        The log you'd want written in the event.
+        This function sends keystrokes to an open window. 
+    .PARAMETER SendKeys
+        The specific keystrokes to send.
+	.PARAMETER WindowTitle
+		The window to send the keystrokes to.
     .EXAMPLE
-        Write-Log "Script failed with the following exception: $($_)"
+        Send-Keystrokes -WindowTitle 'Command Prompt' -SendKeys '%{ENTER}'
+    .LINK
+        Keystroke examples can be reviewed here: https://learn.microsoft.com/en-us/previous-versions/office/developer/office-xp/aa202943(v=office.10)?redirectedfrom=MSDN
     #>
     [CmdletBinding()]
-    param(
+	param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [string]$Message
-    )
+		[string]$SendKeys,
 
-    Add-Content $Script:logFilePath "$(Get-Date) - $Message"
-    Write-Output $Message
-    $Script:eventMessage += $Message | Out-String
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+		[string]$WindowTitle
+	)
+
+    # Select our window and send keys
+	$wshell = New-Object -ComObject wscript.shell;
+	if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
+	if ($SendKeys) { $wshell.SendKeys($SendKeys) }
 }
 
 function Start-Sound {
@@ -85,54 +117,25 @@ function Start-Sound {
     $sound.playsync()
 }
 
-function Send-Keystrokes {
-	<#
-    .SYNOPSIS 
-        Sends keystrokes.
-    .DESCRIPTION
-        This function sends keystrokes to an open window. Keystroke examples can be reviewed here: https://learn.microsoft.com/en-us/previous-versions/office/developer/office-xp/aa202943(v=office.10)?redirectedfrom=MSDN
-    .PARAMETER $SendKeys
-        The specific keystrokes to send.
-	.PARAMETER $WindowTitle
-		The window to send the keystrokes to.
-    .EXAMPLE
-        Send-Keystrokes -WindowTitle 'Command Prompt' -SendKeys '%{ENTER}'
-    #>
-    [CmdletBinding()]
-	param (
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-		[string]$SendKeys,
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-		[string]$WindowTitle
-	)
-
-	$wshell = New-Object -ComObject wscript.shell;
-	if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
-	if ($SendKeys) { $wshell.SendKeys($SendKeys) }
-}
-
-function Get-Screenshot {
+function Write-Log {
     <#
     .SYNOPSIS 
-		Takes a screenshot.
+        Writes a log.
     .DESCRIPTION
-        This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
-    .NOTES
-        The variables below can be tweaked depending on your use-case:
-            - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
-            - $FilePath can be updated to your screenshot folder
+        Writes to a log file. Names it after the script and empowers you to use a similarly-formatted transcript file across your different scripts for reviewing results.
+    .PARAMETER Message
+        The log you'd want written in the event.
+    .EXAMPLE
+        Write-Log "Script failed with the following exception: $($_.Message)"
     #>
     [CmdletBinding()]
-    param()
+    param(
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]$Message
+    )
 
-    $screenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
-    $fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-    $filePath = "C:\Users\me\Pictures\Archived"
-    $Script:file = "$($filePath)\$($fileName).png"
-    Start-Process $screenshotApp -ArgumentList "$File"
-    Start-Sleep -Seconds 1
-    Copy-Item -Path $Script:file -Destination "C:\Users\me\Pictures\Uploads"
+    Add-Content $Script:logFilePath "$(Get-Date) - $Message"
+    Write-Output $Message
+    $Script:eventMessage += $Message | Out-String
 }
