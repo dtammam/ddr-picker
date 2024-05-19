@@ -19,20 +19,20 @@ $Host.UI.RawUI.WindowTitle = $scriptName
 try {
     Open-Header
 
-    Write-Output "Cabinet: Creating variables."
+    Write-Log "Creating variables."
     $registryPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
     $name = 'Shell'
 	$value = '"C:\pegasus\StartFrontendApps.exe"'
     
-    Write-Output "Cabinet: Setting $($name) to $($value)..."
+    Write-Log "Setting [$($name)] to [$($value)]..."
     New-ItemProperty -Path $registryPath -Name $name -Value $value -PropertyType String -Force
-    Write-Output "Cabinet: Modified $($name) to $($value)."
+    Write-Log "Modified [$($name)] to [$($value)]."
 
-    Write-Output "Cabinet: Restarting Computer now..."
+    Write-Log "Restarting Computer now..."
     Restart-Computer
     $script:exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $script:exitCode = 1
 } finally {
     exit $script:exitCode
