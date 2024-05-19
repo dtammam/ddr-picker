@@ -17,15 +17,15 @@ $Host.UI.RawUI.WindowTitle = $scriptName
 try {
     Open-Header
 
-    Write-Output "Cabinet: Starting light test..."
+    Write-Log "Starting light test..."
     Start-Process $lightUtility -WindowStyle Hidden
     Start-Sleep -Milliseconds 325
-    Write-Output "Cabinet: Stopping light test..."
+    Write-Log "Stopping light test..."
     Stop-Process -Name $lightExecutable
-    Write-Output "Cabinet: Stopped light test."
+    Write-Log "Stopped light test."
     $Script:exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $Script:exitCode = 1
 } finally {
     exit $Script:exitCode
