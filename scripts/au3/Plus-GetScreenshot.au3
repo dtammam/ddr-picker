@@ -1,4 +1,4 @@
-;~ 	Plus-ScreenshotTake.au3
+;~ 	Plus-GetScreenshot.au3
 ;~
 ;~ 	Goal:
 ;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
@@ -9,6 +9,8 @@
 ;~
 ;~ 	Version:
 ;~ 		9/20/2022 - Original version.
+;~ 		10/23/2022 - Migration to nircmd.exe for improved screenshot resolution.
+;~ 		05/19/2024 - Rename for hygiene and standardization.
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -19,7 +21,7 @@ Global $Pressed
 HotKeySet("{NUMPADADD}", "Start_Program")
 
 ; Variable to update for our specified file.
-$File = 'C:\pegasus\scripts\ScreenshotTake.ps1'
+$File = 'C:\pegasus\scripts\GetScreenshot.ps1'
 
 ; Neverending loop, waiting on the $Pressed variable.
 While True

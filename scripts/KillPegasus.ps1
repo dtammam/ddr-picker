@@ -1,39 +1,28 @@
 <#
-KillPegasus.ps1
-
-    Goal:
-        The purpose of this script is to kill your front-end launcher when a game is started.
-
-    Audience:
-        People who want to be able to quickly kill the front-end before a specified game launches.
-
-    Version:
-        9/3/2022 - Original version
-
-    Return Codes:
-        Success - 0
-        Failure - 1
-
-    References:
-        N/A
+.SYNOPSIS
+    Kill the front-end launcher.
+.NOTES
+    Quickly kill the front-end launcher.
 #>
 
-# Define good/bad exit codes
-$SuccessExitCode = 0
-$FailureExitCode = 1
-$Host.UI.RawUI.WindowTitle = "Kill Pegasus"
+# Import core modules relevant for all scripts
+[string]$coreFunctionsModule = "$PSScriptRoot\CoreFunctions.psm1"
+Import-Module -Name $coreFunctionsModule -Force
 
-# Overarching Try block for execution
-Try {
+# Variable declaration
+$Host.UI.RawUI.WindowTitle = $scriptName
+
+try {
+    Open-Header
+    
     # Stop all relevant processes, with error actions set to silently continue in the event that some aren't open.
-    Write-Output "Cabinet: Stopping all relevant processes..."
+    Write-Log "Stopping all relevant processes..."
     Stop-Process -Name pegasus-fe -ErrorAction SilentlyContinue
-    Write-Output "Cabinet: Stoped all relevant processes."
-    Exit $SuccessExitCode
-}
-
-# Overarching Catch block for issues
-Catch {
-    Write-Output "Script failed with the following exception: $($_)"
-    Exit $FailureExitCode
+    Write-Log "Stoped all relevant processes."
+    $Script:exitCode = 0
+} catch {
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
+    $Script:exitCode = 1
+} finally {
+    exit $Script:exitCode
 }
