@@ -59,7 +59,7 @@ function Open-Header {
     }
 
     # Your existing log writing and initialization logic here
-    Write-Log "Header opened for script: $scriptName"
+    Write-Log "Header opened for script: [$scriptName]"
 }
 
 function Send-Keystrokes {
