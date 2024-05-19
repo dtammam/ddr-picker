@@ -16,7 +16,7 @@ try {
     Open-Header
 
     # Stop all relevant processes, with error actions set to silently continue in the event that some aren't open.
-    Write-Output "Cabinet: Stopping all relevant processes..."
+    Write-Log "Stopping all relevant processes..."
     Stop-Process -Name pegasus-fe -ErrorAction SilentlyContinue
     Stop-Process -Name spice -ErrorAction SilentlyContinue
     Stop-Process -Name StepMania -ErrorAction SilentlyContinue
@@ -45,14 +45,14 @@ try {
     Get-Process | Where-Object { $_.MainWindowTitle -like '*StartBackendApps' } | Stop-Process -ErrorAction SilentlyContinue -Force
 
     # Start all relevant processes, ensuring that the frontend launcher starts last so it is the focused window.
-    Write-Output "Cabinet: Starting all relevant processes..."
+    Write-Log "Starting all relevant processes..."
     Start-Process PowerShell C:\pegasus\scripts\ResetLitboardLights.ps1 -WindowStyle Hidden
     Start-Process PowerShell C:\Pegasus\scripts\RestartiCloudLoop.ps1 -WindowStyle Minimized
     Start-Process C:\pegasus\pegasus-fe.exe
-    Write-Output "Cabinet: Started all relevant processes."
+    Write-Log "Started all relevant processes."
     $Script:exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $Script:exitCode = 1
 } finally {
     exit $Script:exitCode
