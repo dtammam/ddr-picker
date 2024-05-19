@@ -15,12 +15,12 @@ $Host.UI.RawUI.WindowTitle = $scriptName
 try {
     Open-Header
 
-    Write-Output "Cabinet: Restarting Computer in 1 second..."
+    Write-Log "Restarting Computer in 1 second..."
     Start-Sleep -Seconds 1
     Restart-Computer
     $Script:exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $Script:exitCode = 1
 } finally {
     exit $Script:exitCode
