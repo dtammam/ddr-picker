@@ -28,68 +28,68 @@ try {
 
     # A neverending While loop with our arbitrary variable to make this script run indefinitely
     while ($loop -eq $True) {
-        Write-Output "iCloud Fix: Loop started."
+        Write-Log "Loop started."
         
         # Close iCloud Services
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Stopping [$($iCloudServices)]..."
+        Write-Log "Stopping [$($iCloudServices)]..."
         Start-Sleep -Seconds 2
         if (-not (Get-Process "$iCloudServices" -ErrorAction SilentlyContinue)) {
-            Write-Output "iCloud Fix: [$($iCloudServices)] not running. Continuing..."
+            Write-Log "[$($iCloudServices)] not running. Continuing..."
         } else {
             Stop-Process -Name $iCloudServices -Force -ErrorAction SilentlyContinue
-            Write-Output "iCloud Fix: Stopped [$($iCloudServices)]..."
+            Write-Log "Stopped [$($iCloudServices)]..."
         }
         
         # Close iCloud Photos
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Stopping [$($iCloudPhotos)]..."
+        Write-Log "Stopping [$($iCloudPhotos)]..."
         Start-Sleep -Seconds 2
         if (-not (Get-Process "$iCloudPhotos" -ErrorAction SilentlyContinue)) {
-            Write-Output "iCloud Fix: [$($iCloudPhotos)] not running. Continuing..."
+            Write-Log "[$($iCloudPhotos)] not running. Continuing..."
         } else {
             Stop-Process -Name $iCloudPhotos -Force -ErrorAction SilentlyContinue
-            Write-Output "iCloud Fix: Stopped [$($iCloudPhotos)]..."
+            Write-Log "Stopped [$($iCloudPhotos)]..."
         }
         
         # Start iCloud Services
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Starting [$($iCloudServices)]..."
+        Write-Log "Starting [$($iCloudServices)]..."
         Start-Sleep -Seconds 2
         Start-Process $applePath\"$iCloudServices.exe"
-        Write-Output "iCloud Fix: Started [$($iCloudServices)] successfully."
+        Write-Log "Started [$($iCloudServices)] successfully."
 
         # Start iCloud Photos
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Starting [$($iCloudPhotos)]..."
+        Write-Log "Starting [$($iCloudPhotos)]..."
         Start-Sleep -Seconds 2
         Start-Process $applePath\"$iCloudPhotos.exe"
-        Write-Output "iCloud Fix: Started [$($iCloudPhotos)] successfully."
+        Write-Log "Started [$($iCloudPhotos)] successfully."
 
         # Wait to give time for photos to be taken/uploaded, set variables for Uploads directory
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Waiting 5 minutes to delete photos and restart the loop."
+        Write-Log "Waiting 5 minutes to delete photos and restart the loop."
         Start-Sleep -Seconds 300
 
         # Recurse through the Uploads directory and delete all items in it
         $photos = (Get-ChildItem $photoUploadPath -Recurse).FullName
         foreach ($photo in $photos) {
             Remove-Item -Path $photo
-            Write-Output "iCloud Fix: Successfully deleted [$($photo)] in [$($photoUploadPath)]."
+            Write-Log "Successfully deleted [$($photo)] in [$($photoUploadPath)]."
             $deletedCount += 1
-            Write-Output "iCloud Fix: Successfully deleted [$($deletedCount)] photos."
+            Write-Log "Successfully deleted [$($deletedCount)] photos."
         }
 
         # Restart the loop
         Start-Sleep -Seconds 2
-        Write-Output "iCloud Fix: Restarting the loop..."
+        Write-Log "Restarting the loop..."
         [int]$deletedCount = 0
     }
     $exitCode = 0
 } catch {
-    Write-Output "Script failed with the following exception: [$($_.Message)]"
+    Write-Log "Script failed with the following exception: [$($_.Message)]"
     $exitCode = 1
 } finally {
-    Write-Output "Script completed successfully. Exiting..."
+    Write-Log "Script completed successfully. Exiting..."
     exit $exitCode
 }
