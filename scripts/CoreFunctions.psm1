@@ -1,13 +1,13 @@
 function Get-Screenshot {
     <#
     .SYNOPSIS 
-		Takes a screenshot.
+	Takes a screenshot.
     .DESCRIPTION
         This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
         The variables below can be tweaked depending on your use-case:
-            - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
-            - $FilePath can be updated to your screenshot folder
+        - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
+        - $FilePath can be updated to your screenshot folder
     #>
     [CmdletBinding()]
     param()
@@ -26,7 +26,8 @@ function Open-Header {
     .SYNOPSIS 
         Prepares variables.
     .DESCRIPTION
-        Prepares global variables that will be used for various functions throughout the script. Specifically configured for logging locations and exit codes.
+        Prepares global variables that will be used for various functions throughout the script. 
+	Specifically configured for logging locations and exit codes.
     .EXAMPLE
         Open-Header
     #>
@@ -53,7 +54,7 @@ function Open-Header {
     $Script:logFilePath = "$($Script:logFolderPath)\$scriptName.log"
     $Script:logTailPath = "$($Script:logFolderPath)\$scriptName_Transcript.log"
 
-    # Creare our log folder directory if it doesn't exist
+    # Create our log folder directory if it doesn't exist
     if (-not (Test-Path -Path $Script:logFolderPath)) {
         New-Item -ItemType Directory -Force -Path $Script:logFolderPath
     }
@@ -63,15 +64,15 @@ function Open-Header {
 }
 
 function Send-Keystrokes {
-	<#
+    <#
     .SYNOPSIS 
         Sends keystrokes.
     .DESCRIPTION
         This function sends keystrokes to an open window. 
     .PARAMETER SendKeys
         The specific keystrokes to send.
-	.PARAMETER WindowTitle
-		The window to send the keystrokes to.
+    .PARAMETER WindowTitle
+	The window to send the keystrokes to.
     .EXAMPLE
         Send-Keystrokes -WindowTitle 'Command Prompt' -SendKeys '%{ENTER}'
     .LINK
@@ -81,11 +82,11 @@ function Send-Keystrokes {
 	param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-		[string]$SendKeys,
+	[string]$SendKeys,
 
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-		[string]$WindowTitle
+	[string]$WindowTitle
 	)
 
     # Select our window and send keys
@@ -102,9 +103,9 @@ function Start-Sound {
         This function plays a sound. Leverages the sound player media component of Windows.
     .PARAMETER Path
         Specifies the file to play.
-	.EXAMPLE
-		Start-Sound ("C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds-dm_31bf3856ad364e35_10.0.22621.1_none_a9a06b326661fac0\Windows Notify Email.wav")
-	#>
+    .EXAMPLE
+	Start-Sound ("C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds-dm_31bf3856ad364e35_10.0.22621.1_none_a9a06b326661fac0\Windows Notify Email.wav")
+    #>
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
