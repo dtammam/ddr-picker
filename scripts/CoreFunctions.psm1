@@ -1,7 +1,7 @@
 function Get-Screenshot {
     <#
     .SYNOPSIS 
-	Takes a screenshot.
+        Takes a screenshot.
     .DESCRIPTION
         This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
     .NOTES
@@ -27,7 +27,7 @@ function Open-Header {
         Prepares variables.
     .DESCRIPTION
         Prepares global variables that will be used for various functions throughout the script. 
-	Specifically configured for logging locations and exit codes.
+        Specifically configured for logging locations and exit codes.
     .EXAMPLE
         Open-Header
     #>
@@ -72,27 +72,27 @@ function Send-Keystrokes {
     .PARAMETER SendKeys
         The specific keystrokes to send.
     .PARAMETER WindowTitle
-	The window to send the keystrokes to.
+        The window to send the keystrokes to.
     .EXAMPLE
         Send-Keystrokes -WindowTitle 'Command Prompt' -SendKeys '%{ENTER}'
     .LINK
         Keystroke examples can be reviewed here: https://learn.microsoft.com/en-us/previous-versions/office/developer/office-xp/aa202943(v=office.10)?redirectedfrom=MSDN
     #>
     [CmdletBinding()]
-	param (
+        param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-	[string]$SendKeys,
+        [string]$SendKeys,
 
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-	[string]$WindowTitle
-	)
+        [string]$WindowTitle
+        )
 
     # Select our window and send keys
-	$wshell = New-Object -ComObject wscript.shell;
-	if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
-	if ($SendKeys) { $wshell.SendKeys($SendKeys) }
+        $wshell = New-Object -ComObject wscript.shell;
+        if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
+        if ($SendKeys) { $wshell.SendKeys($SendKeys) }
 }
 
 function Start-Sound {
@@ -104,7 +104,7 @@ function Start-Sound {
     .PARAMETER Path
         Specifies the file to play.
     .EXAMPLE
-	Start-Sound ("C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds-dm_31bf3856ad364e35_10.0.22621.1_none_a9a06b326661fac0\Windows Notify Email.wav")
+        Start-Sound ("C:\Windows\WinSxS\amd64_microsoft-windows-shell-sounds-dm_31bf3856ad364e35_10.0.22621.1_none_a9a06b326661fac0\Windows Notify Email.wav")
     #>
     [CmdletBinding()]
     param(
