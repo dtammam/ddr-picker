@@ -13,12 +13,13 @@ function Get-Screenshot {
     param()
 
     $screenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
-    $fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
-    $filePath = "C:\Users\me\Pictures\Archived"
-    $Script:file = "$($filePath)\$($fileName).png"
+    $Global:fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
+    $Global:filePath = "C:\Users\me\Pictures\Archived"
+    $Global:file = "$($Global:filePath)\$($Global:fileName).png"
+    $Global:fileDestination = "C:\Users\me\Pictures\Uploads"
     Start-Process $screenshotApp -ArgumentList "$File"
     Start-Sleep -Seconds 1
-    Copy-Item -Path $Script:file -Destination "C:\Users\me\Pictures\Uploads"
+    Copy-Item -Path $Global:file -Destination $Global:fileDestination
 }
 
 function Open-Header {
@@ -79,7 +80,7 @@ function Send-Keystrokes {
         Keystroke examples can be reviewed here: https://learn.microsoft.com/en-us/previous-versions/office/developer/office-xp/aa202943(v=office.10)?redirectedfrom=MSDN
     #>
     [CmdletBinding()]
-        param (
+    param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]$SendKeys,
@@ -87,12 +88,12 @@ function Send-Keystrokes {
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]$WindowTitle
-        )
+    )
 
     # Select our window and send keys
-        $wshell = New-Object -ComObject wscript.shell;
-        if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
-        if ($SendKeys) { $wshell.SendKeys($SendKeys) }
+    $wshell = New-Object -ComObject wscript.shell;
+    if ($WindowTitle) { $wshell.AppActivate($WindowTitle) }
+    if ($SendKeys) { $wshell.SendKeys($SendKeys) }
 }
 
 function Start-Sound {
