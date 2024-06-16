@@ -12,7 +12,6 @@
 Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
-$Host.UI.RawUI.WindowTitle = $scriptName
 [string]$executablePath = 'C:\pegasus\scripts\exe\mame2lit.exe'
 
 try {

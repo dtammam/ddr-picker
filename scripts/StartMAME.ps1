@@ -16,7 +16,6 @@ param (
 Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
-$Host.UI.RawUI.WindowTitle = $scriptName
 [string]$Global:executablePath = 'C:\pegasus\games\ddr573-mame\'
 [string]$Global:executable = 'mame.exe'
 [string]$Global:iniPath = '-inipath C:\pegasus\games\ddr573-mame\'
