@@ -49,6 +49,9 @@ function Open-Header {
     # Make the scriptName variable available globally
     Set-Variable -Name scriptName -Value $scriptName -Scope Global
 
+    # Set the window title
+    $Host.UI.RawUI.WindowTitle = $scriptName
+
     # Define other script-level variables
     $Script:exitCode = -1
     $Script:logFolderPath = "C:\Program Files\_scriptLogs"

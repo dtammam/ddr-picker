@@ -13,9 +13,6 @@
 [string]$coreFunctionsModule = "$PSScriptRoot\CoreFunctions.psm1"
 Import-Module -Name $coreFunctionsModule -Force
 
-# Variable declaration
-$Host.UI.RawUI.WindowTitle = $scriptName
-
 try {
     Open-Header
 

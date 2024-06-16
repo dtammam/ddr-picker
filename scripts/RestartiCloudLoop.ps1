@@ -13,9 +13,6 @@
 Import-Module -Name $coreFunctionsModule -Force
 
 # Variable declaration
-$Host.UI.RawUI.WindowTitle = $scriptName
-
-# Variable declaration
 [bool]$loop = $True
 [string]$applePath = "C:\Program Files (x86)\Common Files\Apple\Internet Services\"
 [string]$iCloudServices = "iCloudServices"
