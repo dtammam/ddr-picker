@@ -14,38 +14,37 @@ try {
 
     Write-Log "Stopping all relevant processes..."
     [array]$processesToKill = @(
-        'pegasus-fe'
-        'spice'
-        'StepMania'
-        'mame'
-        'mame2lit'
-        'outfox'
-        'gslauncher'
-        'ITGMania'
         'cmd'
         'explorer'
-        'OpenITG-PC'
-        'OpenITG'
-        'Taskmgr'
-        'cmd'
-        'timeout'
+        'gslauncher'
+        'In The Groove'
+        'ITGMania'
+        'mame'
+        'mame2lit'
+        'mmc'
         'notepad'
         'notepad++'
-        'regedit'
-        'mmc'
         'NotITG-v4.2.0'
-        'In The Groove'
+        'OpenITG'
+        'OpenITG-PC'
+        'outfox'
+        'pegasus-fe'
+        'regedit'
+        'spice'
+        'StepMania'
+        'Taskmgr'
+        'timeout'
     )
 
     foreach ($process in $processesToKill) { Stop-Process -Name $process -ErrorAction SilentlyContinue -Force }
 
     Write-Log "Closing all relevant PowerShell windows..."
     [array]$windowTitlesToKill = @(
+        'ResetLitboardLights'
         'RestartiCloudLoop'
+        'StartBackendApps'
         'StartLitForMAME'
         'StartMAME'
-        'ResetLitboardLights'
-        'StartBackendApps'
     )
 
     foreach ($window in $windowTitlesToKill) {
