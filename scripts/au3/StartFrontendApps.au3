@@ -17,6 +17,7 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Launch relevant PowerShell scripts.
 Run("powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApps.ps1", "", @SW_HIDE)
+Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\ConnectVPN.ps1", "", @SW_HIDE)
 Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1", "", @SW_HIDE)
 
 ; Launch relevant apps.

@@ -16,3 +16,10 @@ config/lastrun.log
 config/lastrun.log
 config/stats.db
 games/ddr573-mame/ui.ini
+games/ddr573-mame/cheat/output.xml
+config/lastrun.log
+config/stats.db
+games/ddr573-mame/cheat/output.xml
+games/ddr573-mame/nvram/ddrexproc/m48t58
+games/ddr573-mame/nvram/ddrmax/m48t58
+games/ddr573-mame/nvram/ddrmax/m48t58
