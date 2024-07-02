@@ -2,7 +2,7 @@ collection: In The Groove
 shortname: ITG
 
 game: ITGMania
-file: C:\pegasus\games\stepmania\StartITGMania.exe
+file: C:\pegasus\games\stepmania\StartITGmania.exe
 sortBy: a
 launch: {file.path}
 assets.box_front: assets/simplylove.png
