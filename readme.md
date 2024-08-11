@@ -3,7 +3,11 @@
 
 ddr-picker is a [pegasus-fe](https://pegasus-frontend.org/)-based game frontend for Dance Dance Revolution cabinets. It was originally created by [evanclue](https://github.com/evanclue/ddr-picker) and has been rewritten by myself to modernize the codebase and add new functionality.
 
-![Demo Video](https://user-images.githubusercontent.com/75964108/222937405-d089f0f8-5f87-4cc6-bd3b-9d1dd49c3043.mp4)
+
+
+https://github.com/user-attachments/assets/45ce5960-92eb-45ac-bb57-3dfa61056f1c
+
+
 
 ## Table of Contents
 - [Introduction](#introduction)
@@ -89,6 +93,16 @@ Pegasus has issues dealing with spaces in paths and generally doesn't play well 
 ## Kiosk Mode
 At this point you have a function setup (you launch Pegasus, your game opens). But we can also take it to the next level by setting up what I call Kiosk mode which makes your experience closer to that of a dedicated arcade machine.
 
+
+
+https://github.com/user-attachments/assets/ae440299-cd6c-43a1-add9-3e25a3174cfe
+
+
+
+https://github.com/user-attachments/assets/bbf55bdc-b2d6-4de3-833d-39c6f157cc0e
+
+
+
 ### Autologin
 Enable the machine to power on and work by setting up autologin.
 
@@ -168,6 +182,12 @@ When in `Kiosk mode,` most standard things won't startup since we won't be launc
 ## Dynamic Marquee
 One of the coolest recent feature additions was a dynamic marquee. The idea came from seeing someone from one of the rhythm game Facebook groups with a monitor and different marquees displayed when they launched different games. It got me excited - I reached out, and they explained that their solution worked but was limited, since it was using wallpapers - wouldn't be compatible with a kiosk-mode as I've got. So I went to work!
 
+
+
+https://github.com/user-attachments/assets/f888339c-eae3-4d2e-9dec-84df6d968b0d
+
+
+
 The dynamic marquee works by leveraging IrfanView, an excellent image viewer. We're leveraging it with a function within `CoreFunctions.psm1` named `Open-FullscreenImage` which opens an image in fullscreen mode. This function is called by the `SetMarquee.ps1` script which takes a filename as a parameter, then calls the function to open the fullscreen image on our second monitor, which acts as the marquee. 
 It's been implemented like this:
 
@@ -221,9 +241,23 @@ I've learned that setting your games to windowed or borderless windowed leads to
    - These have worked for me on ITGMania, ITG 1, ITG 2, ITG 3, Mungyodance, NotITG, and even Stepmania 3.9.
 
 ## Optional Elements
-- `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key.
+- `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key which can be uploaded to a cloud storage service like iCloud.
+
+![screenshotSimplyLove](https://github.com/user-attachments/assets/c5dd333a-dd4a-4340-8412-4b19006cd396)
+![screenshotOmniMix](https://github.com/user-attachments/assets/c1208f53-9724-4dcb-bc45-ee670a2c2e91)
+![screenshotITG2](https://github.com/user-attachments/assets/43a46ebb-ec82-4fd9-b513-fe1b686e4341)
+![screenshotDDRMax](https://github.com/user-attachments/assets/f30aff0c-a090-4362-abdf-5e2cc494d81a)
+
+
 - `StartLitForMAME.ps1`: Enable Litboard-powered lights for 573-MAME games.
 - `RestartiCloudLoop.ps1`: Ensure iCloud photo uploads work.
+
+  
+
+https://github.com/user-attachments/assets/84e36592-89f9-400a-8562-5592f942f6c1
+
+
+
 - `StartMAME.ps1`: Consistently launch MAME games.
 
 ## Contributing
