@@ -31,5 +31,8 @@ Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
 ; Sleep to let the VPN connect.
 Sleep(4000)
 
+; Set the default image for our dynamic marquee.
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\supernova.png"', "", @SW_HIDE)
+
 ; Launch Pegasus.
 Run("C:\pegasus\pegasus-fe.exe")

@@ -1,16 +1,17 @@
 ;~ 	StartITGmania.au3
 ;~
 ;~ 	Goal:
-;~		The purpose of this .au3 is to launch the relevant ROM on launch from the frontend. It'll close the frontend launcher, start the relevant prerequisite apps, and hten launch the game via PowerShell script.
+;~		The purpose of this .au3 is to launch the relevant ROM on launch from the frontend. It'll close the frontend launcher, start the relevant prerequisite apps, and then launch the game via PowerShell script.
 ;~
 ;~ 	Audience:
 ;~ 		People who want to be able to launch scripts on startup.
 ;~
 ;~ 	Version:
-;~ 		9/20/2022 - Original version.
-;~ 		8/14/2023 - Updating path to new version of ITGmania 0.7.0
-;~ 		8/14/2023 - Updating path to new version of ITGmania 0.8.0
-;~ 		7/01/2024 - Standardizing path to more generally refer to a version agnostic ITGmania directory, which will prevent the need to adjust moving forward
+;~ 		2022-09-20 - Original version.
+;~ 		2024-08-14 - Updating path to new version of ITGmania 0.7.0
+;~ 		2024-08-14 - Updating path to new version of ITGmania 0.8.0
+;~ 		2024-07-01 - Standardizing path to more generally refer to a version agnostic ITGmania directory, which will prevent the need to adjust moving forward
+;~ 		2024-08-10 - Update with reference to asset for digital marquee.
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -18,6 +19,10 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Kill Pegasus.
 Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
+
+; Set the dynamic marquee of choice with the correct working directory.
+FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\simply-love.png"', "", @SW_HIDE)
 
 ; Launch the game of choice with the correct working directory.
 FileChangeDir("C:\Games\ITGmania\Program")
