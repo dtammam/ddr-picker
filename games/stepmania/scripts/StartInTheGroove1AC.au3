@@ -7,8 +7,9 @@
 ;~ 		People who want to be able to launch scripts on startup.
 ;~
 ;~ 	Version:
-;~ 		9/20/2022 - Original version.
-;~ 		9/23/2022 - Modification to final ITG1 AC version.
+;~ 		2022-09-20 - Original version.
+;~ 		2024-09-23 - Modification to final ITG1 AC version.
+;~ 		2024-08-10 - Update with reference to asset for digital marquee.
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -16,6 +17,10 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Kill Pegasus.
 Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
+
+; Set the dynamic marquee of choice with the correct working directory.
+FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\itg1.png"', "", @SW_HIDE)
 
 ; Launch the game of choice with the correct working directory.
 FileChangeDir("C:\Games\2004-08-30 ITG1 Arcade Final\Program")

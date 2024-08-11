@@ -19,6 +19,7 @@ try {
         'gslauncher'
         'In The Groove'
         'ITGMania'
+        'i_view64'
         'mame'
         'mame2lit'
         'mmc'
@@ -56,7 +57,9 @@ try {
     Write-Log "Starting all relevant processes..."
     Start-Process PowerShell C:\pegasus\scripts\ResetLitboardLights.ps1 -WindowStyle Hidden
     Start-Process PowerShell C:\Pegasus\scripts\RestartiCloudLoop.ps1 -WindowStyle Minimized
+    Open-FullscreenImage -Image "C:\ddr-picker-assets\ddr-picker\assets\supernova.png" # Match the cabinet by default
     Start-Process C:\pegasus\pegasus-fe.exe
+
     Write-Log "Started all relevant processes."
     $Script:exitCode = 0
 } catch {

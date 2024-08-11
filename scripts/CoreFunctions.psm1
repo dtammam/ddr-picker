@@ -67,6 +67,39 @@ function Open-Header {
     Write-Log "Header opened for script: [$scriptName]"
 }
 
+function Open-FullscreenImage {
+    <#
+    .SYNOPSIS 
+        Opens an image in fullscreen mode.
+    .DESCRIPTION
+        Sets an image file to display on a 2nd monitor. Primary usecase is to act as a dynamic marquee.
+    .PARAMETER Image
+        The image you'd like to display.
+    .EXAMPLE
+        Open-FullscreenImage -Image "C:\Images\DDRA20.jpeg"
+    .NOTES
+        Requires specific Ifranview preferences to be set:
+        - In Options -> Properties/Settings -> Full screen / Slideshow:
+        1. Within `Full screen/Slideshow display options` , choose `Stretch all images/movies to screen (4)`
+        2. Under `Full screen only` options, uncheck `Show text`
+
+        - Open an image, move Irfanview to the correct monitor, full screen, reduce size and then graceully exit. 
+        This configures the .ini file to launch within the correct monitor (due to the now saved coordinates.) 
+        Full screen will launch it on the right screen!
+    #>
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]$Image
+    )
+
+    try {
+        $imageLauncherApp = "C:\Program Files\IrfanView\i_view64.exe"
+        Start-Process $imageLauncherApp -ArgumentList "`"$($Image)`" /fs"
+    } catch { }
+}
+
 function Send-Keystrokes {
     <#
     .SYNOPSIS 
