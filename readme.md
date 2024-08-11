@@ -9,17 +9,23 @@ ddr-picker is a [pegasus-fe](https://pegasus-frontend.org/)-based game frontend 
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
-  - [Prerequisites](#prerequisites)
-  - [Steps](#steps)
+   - [Prerequisites](#prerequisites)
+   - [Steps](#steps)
 - [Configuration](#configuration)
-  - [Initial Setup](#initial-setup)
-  - [Creating Pointer Executables](#creating-pointer-executables)
+   - [Initial Setup](#initial-setup)
+   - [Creating Pointer Executables](#creating-pointer-executables)
 - [Kiosk Mode](#kiosk-mode)
-  - [Autologin](#autologin)
-  - [Audio Switch](#audio-switch)
-  - [Scripts for Switching Modes](#scripts-for-switching-modes)
-  - [Explanation of Startup Scripts](#explanation-of-startup-scripts)
-  - [Startup Apps](#startup-apps)
+   - [Autologin](#autologin)
+   - [Audio Switch](#audio-switch)
+   - [Scripts for Switching Modes](#scripts-for-switching-modes)
+   - [Explanation of Startup Scripts](#explanation-of-startup-scripts)
+   - [Startup Apps](#startup-apps)
+- [Dynamic Marquee](#dynamic-marquee)
+   - [Install IrfanView and Configure It](#install-IrfanView-and-configure-it)
+   - [Choose the startup and default marquee](#choose-the-startup-and-default-marquee)
+   - [Force our reset button to close the marquee and reopen the default](#force-our-reset-button-to-close-the-marquee-and-reopen-the-default)
+   - [Update our game launcher executables](#update-our-game-launcher-executables)
+   - [Set games to windowed](#set-games-to-windowed)
 - [Optional Elements](#optional-elements)
 - [Contributing](#contributing)
 - [License](#license)
@@ -55,13 +61,13 @@ Pegasus works by mapping pictures to executables. You'll need to setup these map
 
 1. Test `C:\pegasus\pegasus-fe.exe` to see if it launches. It should open with a set of non-functional games.
 2. Review and edit the metafiles in `C:\pegasus\config\metafiles`:
-   ```text
+   ```plaintext
    C:\pegasus\config\metafiles\ddr.metadata.pegasus.txt
    C:\pegasus\config\metafiles\itg.metadata.pegasus.txt
    C:\pegasus\config\metafiles\dancingstage.metadata.pegasus.txt
    ```
 3. Customize the pointers to match your game setup. For example:
-   ```text
+   ```plaintext
    collection: In The Groove
    shortname: ITG
 
@@ -88,12 +94,12 @@ Enable the machine to power on and work by setting up autologin.
 
 1. Open `regedit` as Admin.
 2. Go to `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon` and create the following keys:
-   ```text
-   Name - Type - Data
-   AutoAdminLogon - REG_SZ - 1
-   DefaultPassword - REG_SZ - *Your computer password*
-   DefaultUserName - REG_SZ - *Your computer username*
-   ```
+      ```plaintext
+      Name - Type - Data
+      AutoAdminLogon - REG_SZ - 1
+      DefaultPassword - REG_SZ - *Your computer password*
+      DefaultUserName - REG_SZ - *Your computer username*
+      ```
 3. Restart your computer to enable autologin.
 
 ### Audio Switch
@@ -102,12 +108,12 @@ Since `explorer.exe` isn't our shell, the volume mixer won't work. You'll need a
 1. Download and install [AudioSwitch](https://github.com/sirWest/AudioSwitch).
 2. Enable `Show OSD` in the `General` tab.
 3. Map the following hotkeys in the `Hot Keys` tab:
-   ```text
-   Function - Show OSD - Hot Key
-   TogglePlaybackMute - Checked - VolumeMute
-   PlaybackVolumeDown - Checked - VolumeDown
-   PlaybackVolumeUp - Checked - VolumeUp
-   ```
+      ```plaintext
+      Function - Show OSD - Hot Key
+      TogglePlaybackMute - Checked - VolumeMute
+      PlaybackVolumeDown - Checked - VolumeDown
+      PlaybackVolumeUp - Checked - VolumeUp
+      ```
 
 ### Scripts for Switching Modes
 We're going to consider you being on your desktop `PC Mode` and you being on a machine just running pegasus `Kiosk Mode`. `"C:\pegasus\F2-RegistryUpdateKioskToPC.exe"` will set the registry value `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell` to be `explorer.exe` which is how Windows normally works - it's the default Windows shell.
@@ -118,29 +124,29 @@ We're going to consider you being on your desktop `PC Mode` and you being on a m
 
 ### Explanation of Startup Scripts
 Here's `C:\pegasus\scripts\au3\StartFrontendApps.au3` which is compiled to the .exe which is set in that registry key by the PowerShell script above:
-```autoit
-; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
-#include <WinAPIFiles.au3>
-_WinAPI_Wow64EnableWow64FsRedirection(False)
+   ```autoit
+   ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
+   #include <WinAPIFiles.au3>
+   _WinAPI_Wow64EnableWow64FsRedirection(False)
 
-; Launch relevant PowerShell scripts.
-Run("powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApps.ps1", "", @SW_HIDE)
-Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1", "", @SW_HIDE)
+   ; Launch relevant PowerShell scripts.
+   Run("powershell.exe -WindowStyle Hidden -File C:\Pegasus\scripts\StartBackendApps.ps1", "", @SW_HIDE)
+   Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiCloudLoop.ps1", "", @SW_HIDE)
 
-; Launch relevant apps.
-Run("C:\pegasus\Plus-GetScreenshot.exe")
-Run("C:\pegasus\Slash-GetScreenshot.exe")
-Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
-Run("C:\pegasus\Tilde-RestartComputer.exe")
-Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
-Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
+   ; Launch relevant apps.
+   Run("C:\pegasus\Plus-GetScreenshot.exe")
+   Run("C:\pegasus\Slash-GetScreenshot.exe")
+   Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
+   Run("C:\pegasus\Tilde-RestartComputer.exe")
+   Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
+   Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
 
-; Sleep to let the VPN connect.
-Sleep(4000)
+   ; Sleep to let the VPN connect.
+   Sleep(4000)
 
-; Launch Pegasus.
-Run("C:\pegasus\pegasus-fe.exe")
-```
+   ; Launch Pegasus.
+   Run("C:\pegasus\pegasus-fe.exe")
+   ```
 You can read the script and each script it calls to get an idea of exactly what it's doing. The gist is:
 
 - It is launched on system startup instead of `explorer.exe`
@@ -158,6 +164,61 @@ When in `Kiosk mode,` most standard things won't startup since we won't be launc
 `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 2. Create a shortcut for `F2-RegistryUpdateKioskToPC.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 3. Create a shortcut for `F3-RegistryUpdatePCToKiosk.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+
+## Dynamic Marquee
+One of the coolest recent feature additions was a dynamic marquee. The idea came from seeing someone from one of the rhythm game Facebook groups with a monitor and different marquees displayed when they launched different games. It got me excited - I reached out, and they explained that their solution worked but was limited, since it was using wallpapers - wouldn't be compatible with a kiosk-mode as I've got. So I went to work!
+
+The dynamic marquee works by leveraging IrfanView, an excellent image viewer. We're leveraging it with a function within `CoreFunctions.psm1` named `Open-FullscreenImage` which opens an image in fullscreen mode. This function is called by the `SetMarquee.ps1` script which takes a filename as a parameter, then calls the function to open the fullscreen image on our second monitor, which acts as the marquee. 
+It's been implemented like this:
+
+### Install IrfanView and configure it
+1. Download IrvanView from [their website](https://www.irfanview.com/64bit.htm) (I downloaded and referenced 64-bit, but 32-bit should work. Will just require adjusting the program reference)
+2. Open IrfanView and change the following settings:
+   1. Options -> Properties/Settings -> Stretch all images to fit screen. Makes the marquee fit the screen fully
+   2. Options -> Properties/Settings -> Uncheck the option to display text. Makes it so nothing but the image is displayed on the screen
+   3. Open any image file, move it to the marquee monitor so that the coordinates are set and close (not task kill) it. Makes it so that the image you'll open later is launched in fullscreen on the proper monitor
+
+### Choose the startup and default marquee
+1. Updated the `StartFrontendApps.au3` file to open an initial marquee (I'm using DDR Supernova's as that was what my cabinet originally was) like this:
+   ```autoit
+   ; Set the default image for our dynamic marquee.
+   Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\supernova.png"', "", @SW_HIDE)
+   ```
+2. Recompile it as an .exe and it'll display the marquee on initial launch.
+
+### Force our reset button to close the marquee and reopen the default
+1. Add `'i_view64'` to `KillAllAndResetPegasus.ps1` so that on reset, the currently opened marquee is closed.
+2. Add a reference to open the initial marquee like so:
+   ```powershell
+   Open-FullscreenImage -Image "C:\ddr-picker-assets\ddr-picker\assets\supernova.png" # Match the cabinet by default
+   ```
+
+### Update our game launcher executables
+1. Go to each of the .au3 files setup for each game that Pegasus launches, and reference the marquee you'd like to use. Below is an example of what was added within my `Start-ITGMania.au3` file between the reset code block and game launch code block (it'll be the same for all others, with a different file for the marquee):
+   ```autoit
+   ; Kill Pegasus.
+   Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
+
+   ; Set the dynamic marquee of choice with the correct working directory.
+   FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
+   Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\simply-love.png"', "", @SW_HIDE)
+
+   ; Launch the game of choice with the correct working directory.
+   FileChangeDir("C:\Games\ITGmania\Program")
+   Run('C:\Games\ITGmania\Program\ITGmania.exe', "")
+   ```
+
+2. Recompile it as an .exe, make sure it's saved in a place that your Pegasus `*.metadata.pegasus.txt` files is referencing and it'll launch the fullscreen image alongside your games!
+
+### Set games to windowed
+I've learned that setting your games to windowed or borderless windowed leads to the best results. If not, you'll find that the marquee image gets distorted as the resolution changes. To deal with this,
+- Spice games: Change to windowed mode with the resolution of your primary monitor.
+- MAME games: Natively seems to be running in windowed mode.
+- Stepmania games: You can go to the game directory and navigate to `Data\StepMania.ini`, updating the following settings:
+   1. DisplayHeight - `DisplayHeight=2160` in my case
+   2. DisplayWidth - `DisplayWidth=3840` in my case
+   3. Windowed - `Windowed=1`
+   - These have worked for me on ITGMania, ITG 1, ITG 2, ITG 3, Mungyodance, NotITG, and even Stepmania 3.9.
 
 ## Optional Elements
 - `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key.
