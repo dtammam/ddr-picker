@@ -2,19 +2,19 @@ collection: Dance Dance Revolution
 shortname: DDR
 
 game: DDR Omnimix
-file: C:\Games\DDR-JAO-2022052400\ddro.exe
+file: C:\pegasus\games\spice\ddro.exe
 sortBy: a
 launch: {file.path}
 assets.box_front: assets/omni-custom.png
 
 game: DDR A3
-file: C:\Games\DDR-A3_20230704\contents\spice.exe
+file: C:\pegasus\games\spice\ddra3.exe
 sortBy: b
 launch: {file.path}
 assets.box_front: assets/a3-custom.png
 
 game: DDR A20
-file: C:\Games\MDX-001-2020020300\contents\spice.exe
+file: C:\pegasus\games\spice\ddra20.exe
 sortBy: c
 launch: {file.path}
 assets.box_front: assets/ddr-a20.png
