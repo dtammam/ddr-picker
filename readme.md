@@ -1,7 +1,7 @@
 
 # ddr-picker
 
-ddr-picker is a [pegasus-fe](https://pegasus-frontend.org/)-based game frontend for Dance Dance Revolution cabinets. It was originally created by [evanclue](https://github.com/evanclue/ddr-picker) and has been rewritten by myself to modernize the codebase and add new functionality.
+ddr-picker is a [pegasus-fe](https://pegasus-frontend.org/)-based game frontend for Dance Dance Revolution cabinets. It was originally created by [evanclue](https://github.com/evanclue/ddr-picker) and has been rewritten by myself to modernize the codebase, add new functionality and continue evolving the project.
 
 
 
@@ -210,22 +210,41 @@ It's been implemented like this:
 1. Add `'i_view64'` to `KillAllAndResetPegasus.ps1` so that on reset, the currently opened marquee is closed.
 2. Add a reference to open the initial marquee like so:
    ```powershell
-   Open-FullscreenImage -Image "C:\ddr-picker-assets\ddr-picker\assets\supernova.png" # Match the cabinet by default
+   Open-FullscreenImage -Image "C:\pegasus\assets\supernova.png" # Match the cabinet by default
    ```
 
 ### Update our game launcher executables
-1. Go to each of the .au3 files setup for each game that Pegasus launches, and reference the marquee you'd like to use. Below is an example of what was added within my `Start-ITGMania.au3` file between the reset code block and game launch code block (it'll be the same for all others, with a different file for the marquee):
+1. Go to each of the .au3 files setup for each game that Pegasus launches, and reference the marquee you'd like to use. Below is my `Start-ITGMania.au3` file - check the last three sections for the element that will change between these game-specific files:
    ```autoit
+   ;~ 	StartITGmania.au3
+   ;~
+   ;~ 	Goal:
+   ;~		The purpose of this .au3 is to launch the relevant ROM on launch from the frontend. It'll close the frontend launcher, start the relevant prerequisite apps, and then launch the game via PowerShell script.
+   ;~
+   ;~ 	Audience:
+   ;~ 		People who want to be able to launch scripts on startup.
+   ;~
+   ;~ 	Version:
+   ;~ 		2022-09-20 - Original version.
+   ;~ 		2024-08-14 - Updating path to new version of ITGmania 0.7.0
+   ;~ 		2024-08-14 - Updating path to new version of ITGmania 0.8.0
+   ;~ 		2024-07-01 - Standardizing path to more generally refer to a version agnostic ITGmania directory, which will prevent the need to adjust moving forward
+   ;~ 		2024-08-10 - Update with reference to asset for digital marquee.
+   
+   ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
+   #include <WinAPIFiles.au3>
+   _WinAPI_Wow64EnableWow64FsRedirection(False)
+   
    ; Kill Pegasus.
    Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
-
+   
    ; Set the dynamic marquee of choice with the correct working directory.
-   FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
-   Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\simply-love.png"', "", @SW_HIDE)
-
+   FileChangeDir("C:\pegasus\assets")
+   Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\simply-love.png"', "", @SW_HIDE)
+   
    ; Launch the game of choice with the correct working directory.
    FileChangeDir("C:\Games\ITGmania\Program")
-   Run('C:\Games\ITGmania\Program\ITGmania.exe', "")
+   Run('C:\Games\ITGmania\Program\ITGmania.exe', "")   
    ```
 
 2. Recompile it as an .exe, make sure it's saved in a place that your Pegasus `*.metadata.pegasus.txt` files is referencing and it'll launch the fullscreen image alongside your games!
