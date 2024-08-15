@@ -18,8 +18,8 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
 
 ; Set the dynamic marquee of choice with the correct working directory.
-FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
-Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\mungyodance3.png"', "", @SW_HIDE)
+FileChangeDir("C:\pegasus\assets")
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\mungyodance3.png"', "", @SW_HIDE)
 
 ; Launch the game of choice with the correct working directory.
 FileChangeDir("C:\Games\Mungyodance 3\Program")

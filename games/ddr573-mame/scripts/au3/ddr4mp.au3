@@ -22,8 +22,8 @@ Run("powershell.exe -WindowStyle Minimized -File C:\pegasus\scripts\StartLitForM
 $FileAndROM = '"C:\pegasus\scripts\StartMAME.ps1" "ddr4mp -state o"'
 
 ; Set the dynamic marquee of choice with the correct working directory.
-FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
-Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\4thmix.png"', "", @SW_HIDE)
+FileChangeDir("C:\pegasus\assets")
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\4thmix.png"', "", @SW_HIDE)
 
 ; Launch the game of choice with an argument for ROM and save state in double quotes.
 FileChangeDir("C:\pegasus\games\ddr573-mame")

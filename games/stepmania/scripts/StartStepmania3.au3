@@ -18,8 +18,8 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 Run("powershell.exe -WindowStyle Hidden -File C:\pegasus\scripts\KillPegasus.ps1", "", @SW_HIDE)
 
 ; Set the dynamic marquee of choice with the correct working directory.
-FileChangeDir("C:\ddr-picker-assets\ddr-picker\assets")
-Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\ddr-picker-assets\ddr-picker\assets\stepmania3.png"', "", @SW_HIDE)
+FileChangeDir("C:\pegasus\assets")
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\stepmania3.png"', "", @SW_HIDE)
 
 ; Launch the game of choice with the correct working directory.
 FileChangeDir("C:\Games\StepMania 3.9 Vanilla\Program")
