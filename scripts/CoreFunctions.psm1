@@ -132,6 +132,71 @@ function Send-Keystrokes {
     if ($SendKeys) { $wshell.SendKeys($SendKeys) }
 }
 
+function Set-ForegroundWindow {
+    <#
+    .SYNOPSIS
+        Brings a specified window to the foreground.
+    .DESCRIPTION
+        The Set-ForegroundWindow function takes the title of a window as a parameter and attempts to bring that window to the foreground. 
+        If the window is minimized, it will be restored before being brought to the foreground. This can be particularly useful 
+        when automating tasks that require interaction with a specific window.
+    .PARAMETER WindowName
+        The exact title of the window you want to bring to the foreground. This parameter is mandatory.
+    .EXAMPLE
+        Set-ForegroundWindow -WindowName "Untitled - Notepad"
+        
+        This example brings a Notepad window with the title "Untitled - Notepad" to the foreground.
+    .NOTES
+        Ensure that the specified window title is correct, as this function is case-sensitive and requires an exact match.
+    .LINK
+        https://docs.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setforegroundwindow
+    #>
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [string]$WindowName
+    )
+
+    try {
+        # Define a C# class to interact with user32.dll functions (necessary for window manipulation).
+        Add-Type @"
+            using System;
+            using System.Runtime.InteropServices;
+
+            public class User32 {
+                // Import functions for window handling from user32.dll.
+                [DllImport("user32.dll", SetLastError = true)]
+                [return: MarshalAs(UnmanagedType.Bool)]
+                public static extern bool SetForegroundWindow(IntPtr hWnd);
+                
+                [DllImport("user32.dll")]
+                public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+                
+                [DllImport("user32.dll")]
+                public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+                [DllImport("user32.dll", SetLastError = true)]
+                public static extern IntPtr SetFocus(IntPtr hWnd);
+
+                public const int SW_RESTORE = 9;
+            }
+"@
+        # Find the window handle (hWnd) for the specified window name.
+        $hwnd = [User32]::FindWindow([NullString]::Value, $WindowName)
+
+        if ($hwnd -ne [IntPtr]::Zero) {
+            # Restore the window if minimized and bring it to the foreground.
+            [User32]::ShowWindow($hwnd, [User32]::SW_RESTORE)
+            [User32]::SetFocus($hwnd) # Set focus to the window to bring it to the front.
+            [User32]::SetForegroundWindow($hwnd)
+            Write-Host "Window [$WindowName] brought to foreground."
+        } else {
+            # Notify if the window isn't found.
+            Write-Host "Window [$WindowName] not found."
+        }
+    } catch {}
+}
+
 function Start-Sound {
     <#
     .SYNOPSIS 

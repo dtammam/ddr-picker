@@ -32,8 +32,11 @@ Run("C:\pegasus\F4-StartStream.exe")
 ; Sleep to let the VPN connect.
 Sleep(4000)
 
-; Set the default image for our dynamic marquee.ggggggggggggggggggggg
+; Set the default image for our dynamic marquee.
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
 
 ; Launch Pegasus.
 Run("C:\pegasus\pegasus-fe.exe")
+
+; Switch focus to Pegasis.
+Run('powershell.exe -WindowStyle Hidden -Command "& { Import-Module C:\pegasus\scripts\CoreFunctions.psm1; Set-ForegroundWindow -Window ''Pegasus'' }"', "", @SW_HIDE)

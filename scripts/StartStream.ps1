@@ -28,12 +28,16 @@ try {
     # Launch OBS to begin streaming.
     Write-Log "Launching OBS software..."
     Set-Location -Path $broadcasterExecutableBasePath
-    Start-Process -FilePath $broadcasterExecutableFullPath -ArgumentList "--startstreaming"
+    Start-Process -FilePath $broadcasterExecutableFullPath -ArgumentList "--startstreaming --disable-shutdown-check"
     Write-Log "Launched OBS software."
 
     # Play the fun Megatouch sound to indicate that the process has started!
     Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
 
+    # Wait a few seconds and then switch focus back to Pegasus so that the player can start playing
+    Start-Sleep -Seconds 5
+    Set-ForegroundWindow -WindowName 'Pegasus'
+    
     $Script:exitCode = 0
 } catch {
     Write-Log "Script failed with the following exception: [$($_.Message)]"
