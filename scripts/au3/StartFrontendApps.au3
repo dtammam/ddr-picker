@@ -27,6 +27,7 @@ Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
 Run("C:\pegasus\Tilde-RestartComputer.exe")
 Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
 Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
+Run("C:\pegasus\F4-StartStream.exe")
 
 ; Sleep to let the VPN connect.
 Sleep(4000)
@@ -36,3 +37,6 @@ Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1
 
 ; Launch Pegasus.
 Run("C:\pegasus\pegasus-fe.exe")
+
+; Switch focus to Pegasus.
+Run('powershell.exe -WindowStyle Hidden -Command "& { Import-Module ''C:\pegasus\scripts\CoreFunctions.psm1''; Set-ForegroundWindow -Window ''Pegasus'' }"', "", @SW_HIDE)
