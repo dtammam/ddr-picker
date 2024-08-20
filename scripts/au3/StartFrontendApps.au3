@@ -27,11 +27,12 @@ Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
 Run("C:\pegasus\Tilde-RestartComputer.exe")
 Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
 Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
+Run("C:\pegasus\F4-StartStream.exe")
 
 ; Sleep to let the VPN connect.
 Sleep(4000)
 
-; Set the default image for our dynamic marquee.
+; Set the default image for our dynamic marquee.ggggggggggggggggggggg
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
 
 ; Launch Pegasus.
