@@ -2,7 +2,7 @@
 .SYNOPSIS
     Kill the front-end launcher.
 .NOTES
-    Quickly kill the front-end launcher.
+    Quickly kill the front-end launcher and former marquee.
 #>
 
 # Import core modules relevant for all scripts
@@ -14,7 +14,11 @@ try {
     
     # Stop all relevant processes, with error actions set to silently continue in the event that some aren't open.
     Write-Log "Stopping all relevant processes..."
-    Stop-Process -Name pegasus-fe -ErrorAction SilentlyContinue
+    [array]$processesToKill = @(
+        'i_view64'
+        'pegasus-fe'
+    )
+    foreach ($process in $processesToKill) { Stop-Process -Name $process -ErrorAction SilentlyContinue -Force }
     Write-Log "Stoped all relevant processes."
     $Script:exitCode = 0
 } catch {
