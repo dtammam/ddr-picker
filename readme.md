@@ -31,6 +31,7 @@ https://github.com/user-attachments/assets/45ce5960-92eb-45ac-bb57-3dfa61056f1c
    - [Update our game launcher executables](#update-our-game-launcher-executables)
    - [Set games to windowed](#set-games-to-windowed)
 - [Stream Button](#stream-button)
+   - [Install relevant apps and configure them](###install-relevant-apps-and-configure-them)
 - [Optional Elements](#optional-elements)
 - [Contributing](#contributing)
 - [License](#license)
@@ -263,8 +264,14 @@ I've learned that setting your games to windowed or borderless windowed leads to
 ## Stream Button
 Every so often, I like to stream as I play. This is pretty simple but annoying - I needed to initialize my cameras, then launch OBS, then actually start streaming, adding a few extra clicks to the process. After thinking about it, I figured to make this process as simple as possible.
 
+
+
+https://github.com/user-attachments/assets/3e0c7d8c-e17b-451a-8fd7-6dd13a6fce28
+
+
+
 ### Install relevant apps and configure them
-1. Download ![OBS](https://obsproject.com/download), configure it as required to get it streaming
+1. Download [OBS](https://obsproject.com/download), configure it as required to get it streaming
 2. Install any other relevant software (audio, webcam, etc.)
 3. Once done, update `Start-Stream.ps1` with the relevant paths to point to your executables
 4. Once done, thanks to `F4-StartStream.exe` you'll be able to press the `F4` key and have your stream start!
