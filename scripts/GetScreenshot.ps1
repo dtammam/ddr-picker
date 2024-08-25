@@ -14,25 +14,9 @@ try {
     
     Start-Sound ("C:\Games\Megatouch_Click.wav")
     Write-Log "Taking screenshot..."
-
-    # StepMania does not seem to play nicely when in full screened mode, momentarily make it windowed and screenshot
-	if (Get-Process -Name ITGMania -ErrorAction SilentlyContinue) {
-        Write-Log "ITGMania detected."
-		$wshell = New-Object -ComObject wscript.shell;
-		$wshell.AppActivate('Simply Love')
-        Start-Sleep -Seconds 1
-		Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-        Start-Sleep -Seconds 4
-        Start-Sound ("C:\Games\Megatouch_ShutterComplete.wav")
-		Get-Screenshot		
-        Start-Sleep -Seconds 1        
-        Invoke-Expression "C:\pegasus\Send-Alt+Enter.exe"
-        Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
-	} else {
-        Write-Log "ITGMania not detected."
-		Get-Screenshot
-        Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
-	}
+    
+    Get-Screenshot
+    Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
 
     Write-Log "Screenshot taken. Saved [$Global:file] to [$Global:fileDestination]."
     Write-Log "Script succeeded."

@@ -38,5 +38,8 @@ Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1
 ; Launch Pegasus.
 Run("C:\pegasus\pegasus-fe.exe")
 
+; Sleep to give Pegasus time to startup.
+Sleep(3000)
+
 ; Switch focus to Pegasus.
 Run('powershell.exe -WindowStyle Hidden -Command "& { Import-Module ''C:\pegasus\scripts\CoreFunctions.psm1''; Set-ForegroundWindow -Window ''Pegasus'' }"', "", @SW_HIDE)

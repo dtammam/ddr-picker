@@ -30,6 +30,7 @@ https://github.com/user-attachments/assets/45ce5960-92eb-45ac-bb57-3dfa61056f1c
    - [Force our reset button to close the marquee and reopen the default](#force-our-reset-button-to-close-the-marquee-and-reopen-the-default)
    - [Update our game launcher executables](#update-our-game-launcher-executables)
    - [Set games to windowed](#set-games-to-windowed)
+- [Stream Button](#stream-button)
 - [Optional Elements](#optional-elements)
 - [Contributing](#contributing)
 - [License](#license)
@@ -258,6 +259,15 @@ I've learned that setting your games to windowed or borderless windowed leads to
    2. DisplayWidth - `DisplayWidth=3840` in my case
    3. Windowed - `Windowed=1`
    - These have worked for me on ITGMania, ITG 1, ITG 2, ITG 3, Mungyodance, NotITG, and even Stepmania 3.9.
+
+## Stream Button
+Every so often, I like to stream as I play. This is pretty simple but annoying - I needed to initialize my cameras, then launch OBS, then actually start streaming, adding a few extra clicks to the process. After thinking about it, I figured to make this process as simple as possible.
+
+### Install relevant apps and configure them
+1. Download ![OBS](https://obsproject.com/download), configure it as required to get it streaming
+2. Install any other relevant software (audio, webcam, etc.)
+3. Once done, update `Start-Stream.ps1` with the relevant paths to point to your executables
+4. Once done, thanks to `F4-StartStream.exe` you'll be able to press the `F4` key and have your stream start!
 
 ## Optional Elements
 - `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key which can be uploaded to a cloud storage service like iCloud.
