@@ -1,17 +1,15 @@
-;~ 	F4-StartStream.au3
+;~ 	ControlF2-RegistryUpdateKioskToPC.au3
 ;~
 ;~ 	Goal:
-;~		The purpose of this .au3 is to launch the relevant .ps1 file silently and with no console via button press.
+;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
 ;~ 		Without it, one is unable to run a program in a truly silent way (you'll see a command prompt flicker).
 ;~
 ;~ 	Audience:
 ;~ 		People who want to be able to launch scripts via button press.
 ;~
 ;~ 	Version:
-;~ 		2022-09-20 - Original version.
-;~ 		2022-10-23 - Migration to nircmd.exe for improved screenshot resolution.
-;~ 		2024-05-19 - Rename for hygiene and standardization.
-;~ 		2024-08-19 - Military dates, new copy for streaming
+;~ 		9/20/2022 - Original version.
+;~      2024-09-22 - Add a Ctrl modifier
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -19,10 +17,10 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Hotkey for launching the app.
 Global $Pressed
-HotKeySet("{F4}", "Start_Program")
+HotKeySet("^{F2}", "Start_Program")
 
 ; Variable to update for our specified file.
-$File = 'C:\pegasus\scripts\StartStream.ps1'
+$File = 'C:\pegasus\scripts\RegistryUpdateKioskToPC.ps1'
 
 ; Neverending loop, waiting on the $Pressed variable.
 While True

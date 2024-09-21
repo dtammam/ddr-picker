@@ -1,4 +1,4 @@
-;~ 	Tilde-RestartComputer.au3
+;~ 	ControlF3-RegistryUpdatePCToKiosk.au3
 ;~
 ;~ 	Goal:
 ;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
@@ -9,6 +9,7 @@
 ;~
 ;~ 	Version:
 ;~ 		9/20/2022 - Original version.
+;~      2024-09-22 - Add a Ctrl modifier
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -16,10 +17,10 @@ _WinAPI_Wow64EnableWow64FsRedirection(False)
 
 ; Hotkey for launching the app.
 Global $Pressed
-HotKeySet("{`}", "Start_Program")
+HotKeySet("^{F3}", "Start_Program")
 
 ; Variable to update for our specified file.
-$File = 'C:\pegasus\scripts\RestartComputer.ps1'
+$File = 'C:\pegasus\scripts\RegistryUpdatePCToKiosk.ps1'
 
 ; Neverending loop, waiting on the $Pressed variable.
 While True
