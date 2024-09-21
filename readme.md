@@ -132,8 +132,8 @@ Since `explorer.exe` isn't our shell, the volume mixer won't work. You'll need a
       ```
 
 ### Scripts for Switching Modes
-We're going to consider you being on your desktop `PC Mode` and you being on a machine just running pegasus `Kiosk Mode`. `"C:\pegasus\F2-RegistryUpdateKioskToPC.exe"` will set the registry value `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell` to be `explorer.exe` which is how Windows normally works - it's the default Windows shell.
-`"C:\pegasus\F3-RegistryUpdatePCToKiosk.exe"` will set the registry value `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell` to be a compiled AutoIT script that starts up a bunch of utility apps and pegasus.
+We're going to consider you being on your desktop `PC Mode` and you being on a machine just running pegasus `Kiosk Mode`. `"C:\pegasus\ControlF2-RegistryUpdateKioskToPC.exe"` will set the registry value `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell` to be `explorer.exe` which is how Windows normally works - it's the default Windows shell.
+`"C:\pegasus\ControlF3-RegistryUpdatePCToKiosk.exe"` will set the registry value `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell` to be a compiled AutoIT script that starts up a bunch of utility apps and pegasus.
 
 1. Use `RegistryUpdateKioskToPC.ps1` and `RegistryUpdatePCToKiosk.ps1` scripts to switch between PC and Kiosk modes.
 2. Compile these scripts into .exe files using AutoIT and save them in `C:\pegasus`.
@@ -153,9 +153,9 @@ Here's `C:\pegasus\scripts\au3\StartFrontendApps.au3` which is compiled to the .
    Run("C:\pegasus\Plus-GetScreenshot.exe")
    Run("C:\pegasus\Slash-GetScreenshot.exe")
    Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
-   Run("C:\pegasus\Tilde-RestartComputer.exe")
-   Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
-   Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
+   Run("C:\pegasus\ControlTilde-RestartComputer.exe")
+   Run("C:\pegasus\ControlF2-RegistryUpdateKioskToPC.exe")
+   Run("C:\pegasus\ControlF3-RegistryUpdatePCToKiosk.exe")
 
    ; Sleep to let the VPN connect.
    Sleep(4000)
@@ -178,8 +178,8 @@ When in `Kiosk mode,` most standard things won't startup since we won't be launc
 
 1. Create a shortcut for `AudioSwitch.exe` and save it in 
 `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
-2. Create a shortcut for `F2-RegistryUpdateKioskToPC.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
-3. Create a shortcut for `F3-RegistryUpdatePCToKiosk.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+2. Create a shortcut for `ControlF2-RegistryUpdateKioskToPC.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
+3. Create a shortcut for `ControlF3-RegistryUpdatePCToKiosk.exe` in `C:\Users\*YourUserProfile*\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`
 
 ## Dynamic Marquee
 One of the coolest recent feature additions was a dynamic marquee. The idea came from seeing someone from one of the rhythm game Facebook groups with a monitor and different marquees displayed when they launched different games. It got me excited - I reached out, and they explained that their solution worked but was limited, since it was using wallpapers - wouldn't be compatible with a kiosk-mode as I've got. So I went to work!
@@ -274,7 +274,7 @@ https://github.com/user-attachments/assets/3e0c7d8c-e17b-451a-8fd7-6dd13a6fce28
 1. Download [OBS](https://obsproject.com/download), configure it as required to get it streaming
 2. Install any other relevant software (audio, webcam, etc.)
 3. Once done, update `Start-Stream.ps1` with the relevant paths to point to your executables
-4. Once done, thanks to `F4-StartStream.exe` you'll be able to press the `F4` key and have your stream start!
+4. Once done, thanks to `ControlF4-StartStream.exe` you'll be able to press the `F4` key and have your stream start!
 
 ## Optional Elements
 - `Plus-GetScreenshot.au3`, `Slash-GetScreenshot.au3`, and `Get-Screenshot.ps1`: Programmatically take screenshots with a mapped key which can be uploaded to a cloud storage service like iCloud.

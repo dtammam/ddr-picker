@@ -24,10 +24,10 @@ Run("powershell.exe -WindowStyle Minimized -File C:\Pegasus\scripts\RestartiClou
 Run("C:\pegasus\Plus-GetScreenshot.exe")
 Run("C:\pegasus\Slash-GetScreenshot.exe")
 Run("C:\pegasus\ControlSpacebar-KillAllAndResetPegasus.exe")
-Run("C:\pegasus\Tilde-RestartComputer.exe")
-Run("C:\pegasus\F2-RegistryUpdateKioskToPC.exe")
-Run("C:\pegasus\F3-RegistryUpdatePCToKiosk.exe")
-Run("C:\pegasus\F4-StartStream.exe")
+Run("C:\pegasus\ControlTilde-RestartComputer.exe")
+Run("C:\pegasus\ControlF2-RegistryUpdateKioskToPC.exe")
+Run("C:\pegasus\ControlF3-RegistryUpdatePCToKiosk.exe")
+Run("C:\pegasus\ControlF4-StartStream.exe")
 
 ; Sleep to let the VPN connect.
 Sleep(4000)

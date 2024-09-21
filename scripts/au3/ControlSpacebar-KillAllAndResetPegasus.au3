@@ -1,4 +1,4 @@
-;~ 	Spacebar-KillAllAndResetPegasus.au3
+;~ 	ControlSpacebar-KillAllAndResetPegasus.au3
 ;~
 ;~ 	Goal:
 ;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
