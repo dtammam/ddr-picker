@@ -8,6 +8,7 @@ function Get-Screenshot {
         The variables below can be tweaked depending on your use-case:
         - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
         - $FilePath can be updated to your screenshot folder
+        - This whole thing would benefit from config-as-code, but not now
     #>
     [CmdletBinding()]
     param()
@@ -18,8 +19,8 @@ function Get-Screenshot {
     $Global:file = "$($Global:filePath)\$($Global:fileName).png"
     $Global:fileDestination = "C:\Users\me\Pictures\Uploads"
 
-    # Take the screenshot, resize and save
-    Start-Process $screenshotApp -ArgumentList "-save `"$Global:file`" -capturescreen -resizexp 75 -resizeyp 75 -exit"
+    # Take the screenshot of the main monitor, reduce size by 10% for speed and space and save
+    Start-Process $screenshotApp -ArgumentList "-save `"$Global:file`" -capturescreen -capturemon 0 -resizexp 90 -resizeyp 90 -exit"
 
     # Wait a moment for the process to complete
     Start-Sleep -Seconds 1
