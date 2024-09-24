@@ -3,7 +3,7 @@ function Get-Screenshot {
     .SYNOPSIS 
         Takes a screenshot.
     .DESCRIPTION
-        This function takes a screenshot and saves it as a file. Uses a screenshot utility and passes a pre-determined file path within the code.
+        This function takes a screenshot of the primary screen, resizes it by 50%, and saves it as a file. Uses MiniCap for capturing the screenshot.
     .NOTES
         The variables below can be tweaked depending on your use-case:
         - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
@@ -12,15 +12,22 @@ function Get-Screenshot {
     [CmdletBinding()]
     param()
 
-    $screenshotApp = "C:\pegasus\scripts\exe\boxcutter-fs.exe"
+    $screenshotApp = "C:\pegasus\scripts\exe\MiniCap.exe"
     $Global:fileName = Get-Date -Format yyyy-MM-dd_hh-mm-ss
     $Global:filePath = "C:\Users\me\Pictures\Archived"
     $Global:file = "$($Global:filePath)\$($Global:fileName).png"
     $Global:fileDestination = "C:\Users\me\Pictures\Uploads"
-    Start-Process $screenshotApp -ArgumentList "$File"
+
+    # Take the screenshot, resize and save
+    Start-Process $screenshotApp -ArgumentList "-save `"$Global:file`" -capturescreen -resizexp 75 -resizeyp 75 -exit"
+
+    # Wait a moment for the process to complete
     Start-Sleep -Seconds 1
+
+    # Copy the screenshot to another destination if needed
     Copy-Item -Path $Global:file -Destination $Global:fileDestination
 }
+
 
 function Open-Header {
     <#
