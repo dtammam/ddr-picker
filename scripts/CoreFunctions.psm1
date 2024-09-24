@@ -3,12 +3,12 @@ function Get-Screenshot {
     .SYNOPSIS 
         Takes a screenshot.
     .DESCRIPTION
-        This function takes a screenshot of the primary screen, resizes it by 50%, and saves it as a file. Uses MiniCap for capturing the screenshot.
+        This function takes a screenshot and saves it as a file. Uses MiniCap for capturing the screenshot.
     .NOTES
         The variables below can be tweaked depending on your use-case:
         - $screenshotApp can be modified with another application like Magick or ShareX (along with the -ArgumentList in the command itself)
         - $FilePath can be updated to your screenshot folder
-        - This whole thing would benefit from config-as-code, but not now
+        - This whole thing would benefit from config-as-code, but not now.
     #>
     [CmdletBinding()]
     param()
