@@ -62,7 +62,7 @@ try {
     Set-ForegroundWindow -Window 'Pegasus'
 
     Write-Log "Started all relevant processes."
-    Start-Sound ("C:\Games\Sounds\Megatouch_Tap2.wav")
+    Start-Sound ("C:\Games\Sounds\Megatouch_PhotoHunt_Tada.wav")
     $Script:exitCode = 0
 } catch {
     Write-Log "Script failed with the following exception: [$($_.Message)]"
