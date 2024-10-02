@@ -28,6 +28,9 @@ Run("C:\pegasus\ControlTilde-RestartComputer.exe")
 Run("C:\pegasus\ControlF2-RegistryUpdateKioskToPC.exe")
 Run("C:\pegasus\ControlF3-RegistryUpdatePCToKiosk.exe")
 Run("C:\pegasus\ControlF4-StartStream.exe")
+Run("C:\pegasus\ControlF5-StartVSCode.exe")
+Run("C:\pegasus\ControlF6-StartExplorer.exe")
+Run("C:\pegasus\ControlF7-StartEdge.exe")
 
 ; Sleep to let the VPN connect.
 Sleep(4000)

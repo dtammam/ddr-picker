@@ -14,6 +14,7 @@ try {
 
     Write-Log "Restarting Computer in 1 second..."
     Start-Sleep -Seconds 1
+    Start-Sound ("C:\Games\Sounds\Megatouch_PhotoHunt_Phew.wav")
     Restart-Computer
     $Script:exitCode = 0
 } catch {
