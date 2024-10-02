@@ -28,3 +28,8 @@ config/lastrun.log
 config/stats.db
 config/lastrun.log
 games/ddr573-mame/cheat/output.xml
+config/lastrun.log
+config/stats.db
+.gitignore
+config/lastrun.log
+config/stats.db
