@@ -33,3 +33,5 @@ config/stats.db
 .gitignore
 config/lastrun.log
 config/stats.db
+scripts/exe/settings.ini
+config/lastrun.log
