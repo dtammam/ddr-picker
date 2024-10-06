@@ -34,6 +34,7 @@ function Connect-VPN {
 
         if ($null -eq $vpnProcessIsRunning) { throw "The VPN process [$($vpnProcess)] is not running." }
         Write-Output "Validated that the VPN process [$($vpnProcess)] is running!"
+        Start-Sound ("C:\Games\Sounds\Megatouch_PhotoHunt_Yippee.wav")
         
         $Script:exitCode = 0
     } catch {

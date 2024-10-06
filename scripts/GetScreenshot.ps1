@@ -12,11 +12,11 @@ Import-Module -Name $coreFunctionsModule -Force
 try {
     Open-Header
     
-    Start-Sound ("C:\Games\Megatouch_Click.wav")
+    Start-Sound ("C:\Games\Sounds\Megatouch_Click.wav")
     Write-Log "Taking screenshot..."
     
     Get-Screenshot
-    Start-Sound ("C:\Games\Megatouch_Yahoo.wav")
+    Start-Sound ("C:\Games\Sounds\Megatouch_Yahoo.wav")
 
     Write-Log "Screenshot taken. Saved [$Global:file] to [$Global:fileDestination]."
     Write-Log "Script succeeded."

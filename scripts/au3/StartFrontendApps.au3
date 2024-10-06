@@ -50,3 +50,6 @@ Sleep(3000)
 
 ; Switch focus to Pegasus.
 Run('powershell.exe -WindowStyle Hidden -Command "& { Import-Module ''C:\pegasus\scripts\CoreFunctions.psm1''; Set-ForegroundWindow -Window ''Pegasus'' }"', "", @SW_HIDE)
+
+; Play a sound indicating a successful startup.
+Run('powershell.exe -WindowStyle Hidden -Command "& { Import-Module ''C:\pegasus\scripts\CoreFunctions.psm1''; Start-Sound "C:\Games\Sounds\Megatouch_PhotoHunt_LevelEnd.wav }"', "", @SW_HIDE)

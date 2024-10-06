@@ -32,7 +32,7 @@ try {
     Write-Log "Launched OBS software."
 
     # Play the fun Megatouch sound to indicate that the process has started!
-    Start-Sound ("C:\Games\Megatouch_PhotoHunt_Yippee.wav")
+    Start-Sound ("C:\Games\Sounds\Megatouch_PhotoHunt_Yippee.wav")
 
     # Wait a few seconds and then switch focus back to Pegasus so that the player can start playing
     Start-Sleep -Seconds 5
