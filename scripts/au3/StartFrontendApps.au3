@@ -7,9 +7,10 @@
 ;~ 		People who want to be able to launch scripts on startup.
 ;~
 ;~ 	Version:
-;~ 		9/20/2022 - Original version.
-;~ 		10/23/2022 - Migration to nircmd.exe for improved screenshot resolution (Plus-Get-Screenshot.exe and Slash-Get-Screenshot.exe)
-;~ 		05/19/2022 - Reference renamed Plus-GetScreenshot.exe and Slash-GetScreenshot.exe)
+;~ 		2022-09-20: Original version
+;~ 		2022-10-23: Migration to nircmd.exe for improved screenshot resolution (Plus-Get-Screenshot.exe and Slash-Get-Screenshot.exe)
+;~ 		2022-05-19: Reference renamed Plus-GetScreenshot.exe and Slash-GetScreenshot.exe)
+;~ 		2024-10-06: Added section to start ITG2 for display initialization/reset and converted time to military
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
@@ -32,14 +33,17 @@ Run("C:\pegasus\ControlF5-StartVSCode.exe")
 Run("C:\pegasus\ControlF6-StartExplorer.exe")
 Run("C:\pegasus\ControlF7-StartEdge.exe")
 
+; Set the default image for our dynamic marquee.
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
+
 ; Sleep to let the VPN connect.
 Sleep(4000)
 
 ; Set the default image for our dynamic marquee.
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
 
-; Launch Pegasus.
-Run("C:\pegasus\pegasus-fe.exe")
+; Start ITG2 to initialize display, the reset Pegasus.
+Run("C:\pegasus\InitializeDisplayWithITG2.exe")
 
 ; Sleep to give Pegasus time to startup.
 Sleep(3000)
