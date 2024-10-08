@@ -32,6 +32,7 @@ Run("C:\pegasus\ControlF4-StartStream.exe")
 Run("C:\pegasus\ControlF5-StartVSCode.exe")
 Run("C:\pegasus\ControlF6-StartExplorer.exe")
 Run("C:\pegasus\ControlF7-StartEdge.exe")
+Run("C:\pegasus\ControlF8-StartDiagnostics.exe")
 
 ; Set the default image for our dynamic marquee.
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
