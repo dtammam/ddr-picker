@@ -1,15 +1,9 @@
-;~ 	ControlTilde-RestartComputer.au3
-;~
 ;~ 	Goal:
-;~		The purpose of this .au3 is to launch the relevant .ps1 file csilently and with no console via button press.
+;~		The purpose of this .au3 is to launch the relevant .ps1 file silently and with no console via button press.
 ;~ 		Without it, one is unable to run a program in a truly silent way (you'll see a command prompt flicker).
 ;~
 ;~ 	Audience:
 ;~ 		People who want to be able to launch scripts via button press.
-;~
-;~ 	Version:
-;~ 		9/20/2022 - Original version.
-;~      2024-09-22 - Add a Ctrl modifier
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
