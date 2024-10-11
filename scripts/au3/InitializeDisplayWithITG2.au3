@@ -6,10 +6,6 @@
 ;~
 ;~ 	Audience:
 ;~ 		People who want to be able to launch scripts on startup.
-;~
-;~ 	Version:
-;~ 		2024-10-06: Original version. Dependent on StartInTheGroove2.exe which depends on static location of ITG2 here: 
-;~      C:\Games\In The Groove 2\Program\OpenITG.exe
 
 ; Import WinAPI files, ensure that PowerShell launches as a 64-bit instance.
 #include <WinAPIFiles.au3>
