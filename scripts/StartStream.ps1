@@ -19,11 +19,6 @@ Import-Module -Name $coreFunctionsModule -Force
 
 try {
     Open-Header
-
-    # Launch LogiCapture for the camera to be in the appropriate position
-    Write-Log "Launching LogiCapture software..."
-    Start-Process -WindowStyle Hidden -FilePath $webcamExecutablePath
-    Write-Log "Launched LogiCapture software."
     
     # Launch OBS to begin streaming.
     Write-Log "Launching OBS software..."
