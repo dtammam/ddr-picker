@@ -25,6 +25,8 @@ Run("C:\pegasus\listeners\ControlF5-StartCursor.exe")
 Run("C:\pegasus\listeners\ControlF6-StartExplorer.exe")
 Run("C:\pegasus\listeners\ControlF7-StartEdge.exe")
 Run("C:\pegasus\listeners\ControlF8-StartDiagnostics.exe")
+Run("C:\Repositories\local-llm-orchestrator\src\bin\ControlF11-StartServer.exe")
+Run("C:\Repositories\local-llm-orchestrator\src\bin\ControlF12-StopServer.exe")
 
 ; Set the default image for our dynamic marquee.
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
