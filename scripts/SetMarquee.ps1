@@ -24,6 +24,7 @@ try {
     Open-Header
 
     Write-Log "Setting marquee image to [$($Image)]..."
+    Stop-Process -Name 'i_view64'
     Open-FullscreenImage -Image $Image
     Write-Log "Set marquee image to [$($Image)] successfully."
 
