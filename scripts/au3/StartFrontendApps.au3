@@ -37,6 +37,9 @@ Sleep(4000)
 ; Set the default image for our dynamic marquee.
 Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetMarquee.ps1" -Image "C:\pegasus\assets\supernova.png"', "", @SW_HIDE)
 
+; Set the dynamic marquee listener for ITGMania.
+Run('powershell.exe -WindowStyle Hidden -File "C:\Pegasus\scripts\SetITGManiaSongBanner.ps1" -WatchPath "C:\Users\dean\AppData\Roaming\ITGmania\Save" -FileName "CurrentSongInfo.log"', "", @SW_HIDE)
+
 ; Start ITG2 to initialize display, the reset Pegasus.
 Run("C:\pegasus\scripts\exe\InitializeDisplayWithITG2.exe")
 
