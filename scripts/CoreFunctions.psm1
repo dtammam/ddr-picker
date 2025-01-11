@@ -29,20 +29,22 @@ function Get-Screenshot {
     Copy-Item -Path $Global:file -Destination $Global:fileDestination
 }
 
-<#
-.SYNOPSIS
-    Updates the marquee display by reading a file for a banner image path.
-.DESCRIPTION
-    This function reads a specified file to find a line containing a banner image path. It then updates the marquee display by opening the image in fullscreen mode using the Open-FullscreenImage function.
-.PARAMETER FilePath
-    The path to the file that contains the banner image path.
-.EXAMPLE
-    Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
-.NOTES
-    Ensure that the file contains a line with the format 'Banner: <image_path>'.
-#>
+
 function Invoke-SetMarqueeFromFile {
+    <#
+    .SYNOPSIS
+        Updates the marquee display by reading a file for a banner image path.
+    .DESCRIPTION
+        This function reads a specified file to find a line containing a banner image path. It then updates the marquee display by opening the image in fullscreen mode using the Open-FullscreenImage function.
+    .PARAMETER FilePath
+        The path to the file that contains the banner image path.
+    .EXAMPLE
+        Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
+    .NOTES
+        Ensure that the file contains a line with the format 'Banner: <image_path>'.
+    #>
     param (
+        [Parameter(Mandatory)]
         [string]$FilePath
     )
 
