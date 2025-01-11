@@ -29,6 +29,47 @@ function Get-Screenshot {
     Copy-Item -Path $Global:file -Destination $Global:fileDestination
 }
 
+<#
+.SYNOPSIS
+    Updates the marquee display by reading a file for a banner image path.
+.DESCRIPTION
+    This function reads a specified file to find a line containing a banner image path. It then updates the marquee display by opening the image in fullscreen mode using the Open-FullscreenImage function.
+.PARAMETER FilePath
+    The path to the file that contains the banner image path.
+.EXAMPLE
+    Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
+.NOTES
+    Ensure that the file contains a line with the format 'Banner: <image_path>'.
+#>
+function Invoke-SetMarqueeFromFile {
+    param (
+        [string]$FilePath
+    )
+
+    try {
+        # Read the file contents
+        $contents = Get-Content -Path $FilePath -ErrorAction Stop
+
+        # Find the line that contains the banner path
+        $bannerLine = $contents | Where-Object { $_ -match 'Banner:' }
+
+        if ($bannerLine) {
+            # Extract the file path from the banner line
+            $bannerPath = $bannerLine -replace '.*Banner:\s*', ''
+
+            # Update the marquee display
+            Stop-Process -Name 'i_view64' -ErrorAction SilentlyContinue
+            Open-FullscreenImage -Image $bannerPath
+            Start-Sleep -Seconds 2
+            Set-ForegroundWindow -Window 'Simply Love'
+        } else {
+            Write-Warning "No banner line found in the file."
+        }
+    } catch {
+        Write-Warning "Failed to process the file: $($_.Exception.Message)"
+    }
+}
+
 
 function Open-Header {
     <#
