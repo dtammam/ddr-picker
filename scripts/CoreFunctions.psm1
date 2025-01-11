@@ -38,14 +38,19 @@ function Invoke-SetMarqueeFromFile {
         This function reads a specified file to find a line containing a banner image path. It then updates the marquee display by opening the image in fullscreen mode using the Open-FullscreenImage function.
     .PARAMETER FilePath
         The path to the file that contains the banner image path.
+    .PARAMETER FallbackBanner
+        The path to a fallback banner image to use if the banner is null or empty.
     .EXAMPLE
-        Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
+        Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log" -FallbackBanner "C:\Images\DefaultBanner.png"
     .NOTES
         Ensure that the file contains a line with the format 'Banner: <image_path>'.
     #>
     param (
         [Parameter(Mandatory)]
-        [string]$FilePath
+        [string]$FilePath,
+
+        [Parameter()]
+        [string]$FallbackBanner
     )
 
     try {
@@ -58,6 +63,16 @@ function Invoke-SetMarqueeFromFile {
         if ($bannerLine) {
             # Extract the file path from the banner line
             $bannerPath = $bannerLine -replace '.*Banner:\s*', ''
+
+            # Use fallback banner if the banner path is null or empty
+            if (-not $bannerPath) {
+                if ($FallbackBanner) {
+                    $bannerPath = $FallbackBanner
+                } else {
+                    Write-Warning "Banner path is empty and no fallback banner provided."
+                    return
+                }
+            }
 
             # Update the marquee display
             Stop-Process -Name 'i_view64' -ErrorAction SilentlyContinue

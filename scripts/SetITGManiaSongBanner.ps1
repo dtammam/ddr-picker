@@ -3,19 +3,20 @@
     Monitors a file for changes and updates the marquee image accordingly.
 .DESCRIPTION
     This script watches a specified file for changes. When the file is updated, it reads the file to find a banner line, extracts the image path, and updates the marquee display using the Open-FullscreenImage function.
-.PARAMETER WatchPath
-    The directory path to watch for the file.
-.PARAMETER FileName
-    The name of the file to monitor for changes.
+.PARAMETER FullFilePath
+    The full path of the file to monitor for changes.
 .EXAMPLE
-    .\Watch-ITGManiaSongSelection.ps1 -WatchPath "C:\Users\dean\AppData\Roaming\ITGmania\Save" -FileName "CurrentSongInfo.log"
+    .\Watch-ITGManiaSongSelection.ps1 -FullFilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
 .NOTES
     Ensure that the CoreFunctions module is available and properly configured.
 #>
 [CmdletBinding()]
 param(
-    [string]$WatchPath = "C:\Users\dean\AppData\Roaming\ITGmania\Save",
-    [string]$FileName = "CurrentSongInfo.log"
+    [Parameter()]
+    [string]$FullFilePath = "C:\Games\ITGmania\Save\CurrentSongInfo.log",
+
+    [Parameter()]
+    [string]$FallbackBannerPath = "C:\pegasus\assets\simply-love.png"
 )
 
 # Import core modules relevant for all scripts
@@ -25,8 +26,12 @@ Import-Module -Name $coreFunctionsModule -Force
 try {
     Open-Header
 
+    # Split the full file path into directory and file name
+    $WatchPath = Split-Path -Path $FullFilePath -Parent
+    $FileName = Split-Path -Path $FullFilePath -Leaf
+
     # Construct the full path to the file.
-    $file = Join-Path $WatchPath $FileName
+    $file = Join-Path -Path $WatchPath -ChildPath $FileName
 
     # Verify that the folder exists.
     if (-not (Test-Path $WatchPath)) {
@@ -35,9 +40,7 @@ try {
     }
 
     # Create the file if it doesn't exist.
-    if (-not (Test-Path $WatchPath\$FileName -PathType Leaf)) {
-        New-Item $WatchPath\$FileName -Force
-    }
+    if (-not (Test-Path $file -PathType Leaf)) { New-Item $file -Force }
 
     # Inform the user that the script is polling the file.
     Write-Log "Polling file: [$file]"
@@ -58,7 +61,7 @@ try {
             # If the file has been updated, process its contents.
             if ($currentWriteTime -gt $lastWriteTime) {
                 Write-Log "`n===== $(Get-Date): File updated! ====="
-                Invoke-SetMarqueeFromFile -FilePath "C:\Users\dean\AppData\Roaming\ITGmania\Save\CurrentSongInfo.log"
+                Invoke-SetMarqueeFromFile -FilePath $file -FallbackBanner $FallbackBannerPath
 
                 # Short sleep to ensure the file is not being written to.
                 Start-Sleep -Seconds 1
