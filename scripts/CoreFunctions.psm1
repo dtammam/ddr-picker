@@ -77,7 +77,6 @@ function Invoke-SetMarqueeFromFile {
             # Update the marquee display
             Stop-Process -Name 'i_view64' -ErrorAction SilentlyContinue
             Open-FullscreenImage -Image $bannerPath
-            Start-Sleep -Seconds 2
             Set-ForegroundWindow -Window 'Simply Love'
         } else {
             Write-Warning "No banner line found in the file."
