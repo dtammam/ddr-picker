@@ -1,4 +1,4 @@
-collection: Dancing Stage
+collection: 3_Dancing Stage
 shortname: DS
 
 game: Disney's Rave
