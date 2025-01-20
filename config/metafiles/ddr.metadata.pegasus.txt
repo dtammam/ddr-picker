@@ -1,4 +1,4 @@
-collection: 2_Dance Dance Revolution
+collection: c_Dance Dance Revolution
 shortname: DDR
 
 game: DDR Omnimix
