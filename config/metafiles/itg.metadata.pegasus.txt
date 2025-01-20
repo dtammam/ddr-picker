@@ -1,4 +1,4 @@
-collection: In The Groove
+collection: a_In The Groove
 shortname: ITG
 
 game: ITGMania
