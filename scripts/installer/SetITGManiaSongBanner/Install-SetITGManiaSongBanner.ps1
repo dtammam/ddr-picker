@@ -18,37 +18,35 @@ Import-Module -Name $coreFunctionsModule -Force
 try {
     Open-Header
 
-    # Define source and destination paths
-    $sourceDir = $PSScriptRoot
-    $destinationDir = Join-Path -Path $InstallPath -ChildPath "Themes\Simply Love\BGAnimations\ScreenSelectMusic overlay"
+    # Define source and destination base paths
+    $sourceBaseDir = $PSScriptRoot
+    $destinationBaseDir = Join-Path -Path $InstallPath -ChildPath "Themes\Simply Love\BGAnimations"
 
-    # Ensure destination directory exists
-    if (-not (Test-Path -Path $destinationDir)) {
-        Write-Log "Creating destination directory..."
-        try {
-            New-Item -Path $destinationDir -ItemType Directory -Force -ErrorAction Stop | Out-Null
-        }
-        catch {
-            throw "Failed to create destination directory at [$destinationDir] with the following exception: [$($_.Exception.Message)]"
-        }
-    }
-
-    # Files to copy
-    $filesToCopy = @(
-        "default.lua",
-        "MySongMonitor.lua"
+    # Directories to copy contents from
+    $directoriesToCopy = @(
+        "ScreenGameplay overlay",
+        "ScreenSelectMusic overlay"
     )
 
-    # Copy each file
-    foreach ($file in $filesToCopy) {
-        $sourcePath = Join-Path -Path $sourceDir -ChildPath $file
-        $destinationPath = Join-Path -Path $destinationDir -ChildPath $file
-        
-        if (Test-Path -Path $sourcePath) {
-            Write-Log "Copying [$file] to [$destinationDir]..."
-            Copy-Item -Path $sourcePath -Destination $destinationPath -Force
-        } else {
-            Write-Warning "Source file not found: [$sourcePath]"
+    # Check each destination directory exists and copy files
+    foreach ($dir in $directoriesToCopy) {
+        $sourceDir = Join-Path -Path $sourceBaseDir -ChildPath $dir
+        $destinationDir = Join-Path -Path $destinationBaseDir -ChildPath $dir
+
+        # Check if destination directory exists
+        if (-not (Test-Path -Path $destinationDir)) {
+            $errorMessage = "Destination directory [$destinationDir] does not exist."
+            Write-Log $errorMessage
+            throw $errorMessage
+        }
+
+        # Copy only files from source to destination directory
+        Get-ChildItem -Path $sourceDir -File | ForEach-Object {
+            $sourceFilePath = $_.FullName
+            $destinationFilePath = Join-Path -Path $destinationDir -ChildPath $_.Name
+
+            Write-Log "Copying file [$($_)] to [$destinationDir]..."
+            Copy-Item -Path $sourceFilePath -Destination $destinationFilePath -Force
         }
     }
 
